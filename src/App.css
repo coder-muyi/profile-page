@@ -172,8 +172,18 @@ button a {
   background: white;
   margin-top: 4rem;
   padding-block: 2em;
-  background-image: url('./assets/project-bg.svg');
-  background-size: 100% 100%;
+  background-image: url(./assets/project-bg.png);
+  background-size: 500px;
+  /* background-repeat: repeat-x; */
+  background-position: 0;
+  animation: bg-scroll 50s linear infinite;
+  animation-timing-function: cubic-bezier(0.68, -0.55, 0.27, 1.55);
+}
+
+@keyframes bg-scroll {
+  to {
+    background-position: 5000px 2000px;
+  }
 }
 
 .dark-app .Projects {
@@ -183,7 +193,7 @@ button a {
 .project-bg {
   fill: var(--linkedin-blue);
   stroke-width: 3;
-  stroke: white;
+  /* stroke: black; */
 }
 
 .projects-list {

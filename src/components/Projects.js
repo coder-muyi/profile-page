@@ -1,4 +1,5 @@
 import { ReactComponent as Arrow } from "../assets/icons/arrow-right.svg"
+import { ReactComponent as Bg } from "../assets/project-bg.svg"
 
 const Projects = () => {
   const projectsList = [
@@ -31,6 +32,7 @@ const Projects = () => {
   return (
     <div className="Projects">
       <h2>My Projects</h2>
+      <Bg />
       <ul className="projects-list">
         {
           projectsList.map((project, key) => 

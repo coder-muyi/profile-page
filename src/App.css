@@ -1,7 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
 
 :root {
-  --project-transition-duration: .25s;
   --cmn-box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.2);
 }
 
@@ -10,7 +9,7 @@ body {
 }
 
 * {
-  transition-duration: var(--project-transition-duration)
+  transition-duration: .25s;
 }
 
 .App {
@@ -214,7 +213,6 @@ button a {
   overflow: hidden;
   background: white;
   transition-timing-function: cubic-bezier(0.68, -0.55, 0.27, 1.55);
-  transition-duration: var(--project-transition-duration);
 }
 
 .dark-app .project {
@@ -223,7 +221,7 @@ button a {
 
 .project:hover {
   box-shadow: var(--cmn-box-shadow);
-  border-radius: 0;
+  border-radius: 10px;
   transform: scale(1.2); 
 }
 
@@ -251,7 +249,6 @@ button a {
   opacity: 0;
   position: absolute;
   inset: 0;
-  transition-duration: var(--project-transition-duration);
 }
 
 .project:hover .project-overlay {
@@ -261,7 +258,6 @@ button a {
 
 .project-overlay .go-to {
   transition-timing-function: cubic-bezier(.22,.68,0,1.71);
-  transition-duration: var(--project-transition-duration);
   transition-delay: .3s;
   visibility: hidden;
   background-color: white;
@@ -285,8 +281,6 @@ button a {
 .project-overlay .go-to .arrow {
   display: inline-block;
   opacity: 0;
-  /* color: #297FE5; */
-  transition-duration: var(--project-transition-duration);
   width: 0;
   height: 20px;
 }

@@ -11,7 +11,7 @@ const Info = () => {
 
       <div className="Info--contents">
         <h1 className="name">Samuel Adepoju</h1>
-        <h4 className="occupation">Frontend Developer</h4>
+        <p className="occupation">Frontend Developer</p>
         <p className="website">codermuyi.vercel.app</p>
         <div className="Info--content_btns">
           <button className="email-btn">

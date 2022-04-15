@@ -21,7 +21,7 @@ const Info = () => {
             </a>
           </button>
           <button className="linkedin-btn">
-            <a href="#linkedin">
+            <a href="https://www.linkedin.com/in/oluwamuyiwa-adepoju-2b0948237/">
               <LinkedInIcon />
               <span>LinkedIn</span>
             </a>

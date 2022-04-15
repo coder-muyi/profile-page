@@ -1,12 +1,10 @@
+import { ReactComponent as Arrow } from "../assets/icons/arrow-right.svg"
+
 const Projects = () => {
   const projectsList = [
     {
       name: "Playing With Colors",
       url: "https://samuel-username.github.io/Material-UI-Colors",
-    },
-    {
-      name: "Huddle landing page",
-      url: "https://samuel-username.github.io/landing_page"
     },
     {
       name: "Movie list",
@@ -15,6 +13,10 @@ const Projects = () => {
     {
       name: "My blackjack",
       url: "https://samuel-username.github.io/blackjack"
+    },
+    {
+      name: "Huddle landing page",
+      url: "https://samuel-username.github.io/landing_page"
     },
     {
       name: "Coming Soon",
@@ -34,10 +36,11 @@ const Projects = () => {
           projectsList.map((project, key) => 
             <li className="project" key={key}>
               <p className="project-title">{project.name}</p>
+
               <div className="project-preview">
-                <iframe title={project.name} src={project.url} />
+                <iframe title={project.name} src={project.url} loading="lazy" />
                 <div className="project-overlay">
-                  <button className="go-to"><a href={project.url}>Visit site</a></button>
+                  <button className="go-to"><a href={project.url}>Visit site <Arrow /></a></button>
                 </div>
               </div>
             </li>

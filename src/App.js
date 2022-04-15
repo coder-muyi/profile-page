@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react"
 import "./App.css"
-import ThemeToggle from "./components/ThemeToggle"
 import Info from "./components/Info"
 import About from "./components/About"
 import Interests from "./components/Interests"
@@ -19,7 +18,6 @@ const App = () => {
 
   return (
     <div className={appClassName}>
-      <ThemeToggle changeTheme={changeTheme} />
       <Info />
       <About />
       <Interests />

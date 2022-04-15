@@ -3,7 +3,7 @@ import { ReactComponent as Arrow } from "../assets/icons/arrow-right.svg"
 const Projects = () => {
   const projectsList = [
     {
-      name: "Playing With Colors",
+      name: "Material UI Colors Demo",
       url: "https://samuel-username.github.io/Material-UI-Colors",
     },
     {

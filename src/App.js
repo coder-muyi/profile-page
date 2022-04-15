@@ -1,9 +1,10 @@
 import { useState, useEffect } from "react"
 import "./App.css"
+import ThemeToggle from "./components/ThemeToggle"
 import Info from "./components/Info"
 import About from "./components/About"
 import Interests from "./components/Interests"
-// import Projects from "./components/Projects"
+import Projects from "./components/Projects"
 import Footer from "./components/Footer"
 
 const App = () => {
@@ -18,10 +19,11 @@ const App = () => {
 
   return (
     <div className={appClassName}>
+      <ThemeToggle changeTheme={changeTheme} isChecked={isDarkMode} />
       <Info />
       <About />
       <Interests />
-      {/* <Projects /> */}
+      <Projects />
       <Footer />
     </div>
   )

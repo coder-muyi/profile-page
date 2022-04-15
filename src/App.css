@@ -177,7 +177,7 @@ button a {
 }
 
 .dark-app .Projects {
-  background: inherit;
+  background: var(--bg-color);
 }
 
 .project-bg {

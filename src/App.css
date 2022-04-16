@@ -2,6 +2,7 @@
 
 :root {
   --cmn-box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.2);
+  --project-card-size: 250px;
 }
 
 body {
@@ -192,7 +193,6 @@ button a {
 .project-bg {
   fill: var(--linkedin-blue);
   stroke-width: 3;
-  /* stroke: black; */
 }
 
 .projects-list {
@@ -206,13 +206,16 @@ button a {
 }
 
 .project {
-  width: 250px;
-  height: 250px;
+  width: var(--project-card-size);
+  height: var(--project-card-size);
   margin: 3em;
   border-radius: 50%;
   overflow: hidden;
+  mask-image: radial-gradient(white, black);
+  -webkit-mask-image: -webkit-radial-gradient(white, black);
   background: white;
   transition-timing-function: cubic-bezier(0.68, -0.55, 0.27, 1.55);
+  border: 1px solid black;
 }
 
 .dark-app .project {
@@ -240,8 +243,8 @@ button a {
 }
 
 .project-preview iframe {
-  width: 100%;
-  height: 100%;
+  width: var(--project-card-size);
+  height: var(--project-card-size);
   border: 0;
 }
 
@@ -347,11 +350,10 @@ button a {
 }
 
 @media (min-width: 1200px) {
-  .project {
-    height: 300px;
-    width: 300px;
+  :root {
+    --project-card-size: 300px;
   }
-
+  
   .project-title {
     padding-block: 1em;
     font-size: 1rem;

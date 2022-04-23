@@ -9,17 +9,18 @@ import Footer from "./components/Footer"
 
 const App = () => {
   const [isDarkMode, setDarkMode] = useState(false)
-  const [appClassName, setAppClassName] = useState("App")
 
-  const changeTheme = (event) => setDarkMode(event.target.checked)
+  const changeTheme = event => setDarkMode(event.target.checked)
 
   useEffect(() => {
-    setAppClassName(isDarkMode ? "App dark-app" : "App")
-  }, [isDarkMode])
+    if ((window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      setDarkMode(true);
+    }
+  }, [])
 
   return (
-    <div className={appClassName}>
-      <ThemeToggle changeTheme={changeTheme} isChecked={isDarkMode} />
+    <div className={`App ${isDarkMode && "dark-app"}`}>
+      <ThemeToggle changeTheme={changeTheme} isDarkMode={isDarkMode} />
       <Info />
       <About />
       <Interests />

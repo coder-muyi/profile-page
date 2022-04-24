@@ -188,7 +188,7 @@ button a {
   -webkit-mask-image: -webkit-radial-gradient(white, black);
   background: white;
   transition-timing-function: cubic-bezier(0.68, -0.55, 0.27, 1.55);
-  border: 1px solid black;
+  border: .1em solid var(--linkedin-blue);
 }
 
 .dark-app .project {

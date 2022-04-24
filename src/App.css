@@ -39,33 +39,6 @@ body {
   color: white;
 }
 
-.theme-toggle {
-  position: fixed;
-  top: 10px;
-  left: 50%;
-  transform: translateX(-50%);
-  color: white;
-  background-color: var(--linkedin-blue);
-  border-radius: 10px;
-  padding: 5px;
-  user-select: none;
-  box-shadow: 0px 3px 4px rgba(0, 0, 0, 0.05);
-  cursor: pointer;
-  z-index: 1000;
-}
-
-.theme-toggle:hover {
-  color: black;
-}
-
-.theme-toggle > * {
-  cursor: pointer;
-}
-
-.theme-toggle input {
-  display: none;
-}
-
 h1,
 h2 {
   color: var(--header-txt-color);

@@ -11,9 +11,9 @@ const Projects = () => {
       <ul className="projects-list">
         {
           projectsList.map((project, key) => 
-            <li className="project" key={key}>
+            <li className="project" key={key} tabIndex="0">
               <p className="project-title">{project.name}</p>
-              <div className="project-preview">
+              <div className="project-preview" tabIndex="0">
                 {/* <iframe title={project.name} src={project.url} loading="lazy" /> */}
                 
                 <div className="project-overlay">

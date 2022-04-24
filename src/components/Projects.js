@@ -18,7 +18,7 @@ const Projects = () => {
                   src={project.imgSrc}
                   alt={project.name}
                   width="100%"
-                  style={{objectFit: "cover"}} 
+                  loading="lazy"
                 />
                 <div className="project-overlay">
                   <button className="go-to"><a href={project.url}>Visit site <Arrow /></a></button>

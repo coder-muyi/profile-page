@@ -14,12 +14,12 @@ const Projects = () => {
             <li className="project" key={key} tabIndex="0">
               <p className="project-title">{project.name}</p>
               <div className="project-preview" tabIndex="0">
-                {/* <iframe title={project.name} src={project.url} loading="lazy" /> */}
                 <img 
                   src={project.imgSrc}
                   alt={project.name}
                   width="100%"
-                  style={{objectFit: "cover"}} />
+                  style={{objectFit: "cover"}} 
+                />
                 <div className="project-overlay">
                   <button className="go-to"><a href={project.url}>Visit site <Arrow /></a></button>
                 </div>

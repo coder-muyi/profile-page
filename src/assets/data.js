@@ -38,7 +38,7 @@ export const projectsList = [
   },
   { 
     name: "Moviemanic 2.0",
-    imgSrc: `${rootUrl}/project_imgs/coming-soon.png`,
+    imgSrc: `${rootUrl}/coming-soon.png`,
     url: ""
   }
 ]

@@ -56,18 +56,36 @@ h2::before {
 
 .Info {
   text-align: center;
-  padding-bottom: 2rem;
+  padding-block: 5rem;
+  position: relative;
+  margin-bottom: 3em;
+}
+
+.Info * {
+  z-index: 2;
+  position: relative;
+}
+
+.Info::before { 
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-color: var(--linkedin-blue);
+  z-index: 1;
+  clip-path: polygon(0 0, 48% 45%, 100% 35%, 100% 70%, 48% 57%, 0 100%, 43% 100%, 0% 70%, 0% 35%, 43% 0);
 }
 
 .Info--img {
   width: 100%;
   padding-top: 1em;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.6);
 }
 
 .Info--img img {
   width: 80%;
   border-radius: 50%;
   object-fit: cover;
+  box-shadow: 0 6px 6px 3px rgba(0, 0, 0, 0.3);
 }
 
 .Info--contents .name {
@@ -152,6 +170,28 @@ button a {
   animation: bg-scroll 50s linear infinite;
   animation-timing-function: cubic-bezier(0.68, -0.55, 0.27, 1.55);
 }
+
+.Projects h2 {
+  position: relative;
+}
+
+.Projects h2::before,
+.Projects h2::after {
+  content: "";
+  position: absolute;
+  padding: 1em;
+  background-color: var(--linkedin-blue);
+  clip-path: polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%);
+}
+
+.Projects h2::before { 
+  left: 0;
+}
+
+.Projects h2::after {
+  right: 0;
+}
+
 
 @keyframes bg-scroll {
   to {
@@ -268,6 +308,7 @@ button a {
 
 .Footer {
   background-color: var(--footer-bg-color);
+  margin-top: -2rem;
 }
 
 .Footer--icons {
@@ -325,6 +366,10 @@ button a {
 @media (min-width: 1200px) {
   :root {
     --project-card-size: 300px;
+  }
+
+  .Info::before {
+    left: -50%;
   }
   
   .project-title {

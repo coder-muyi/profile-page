@@ -22,7 +22,7 @@ export const projectsList = [
     url: "https://samuel-username.github.io/landing_page"
   },
   {
-    name: "Coming Soon",
+    name: "Base Apparel",
     imgSrc: `${rootUrl}/base-apparel.png`,
     url: "https://samuel-username.github.io/coming-soon-landing-page"
   },

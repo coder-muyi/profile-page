@@ -32,7 +32,7 @@ export const projectsList = [
     url: "https://samuel-username.github.io/blogr-landing-page"
   },
   { 
-    name: "Geoid",
+    name: "Geoid (Ongoing)",
     imgSrc: `${rootUrl}/geoid.png`,
     url: "https://geoid.vercel.app"
   },

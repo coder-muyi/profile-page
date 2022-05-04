@@ -165,14 +165,13 @@ button a {
   padding-block: 2em;
   background-image: url(./assets/project-bg.png);
   background-size: 500px;
-  /* background-repeat: repeat-x; */
   background-position: 0;
-  animation: bg-scroll 50s linear infinite;
-  animation-timing-function: cubic-bezier(0.68, -0.55, 0.27, 1.55);
 }
 
 .Projects h2 {
   position: relative;
+  max-width: 1200px;
+  margin-inline: auto;
 }
 
 .Projects h2::before,
@@ -190,13 +189,6 @@ button a {
 
 .Projects h2::after {
   right: 0;
-}
-
-
-@keyframes bg-scroll {
-  to {
-    background-position: 5000px 2000px;
-  }
 }
 
 .dark-app .Projects {

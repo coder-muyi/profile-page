@@ -226,7 +226,8 @@ button a {
   box-shadow: 0px 6px 10px rgba(255, 255, 255, 0.5);
 }
 
-.project:hover {
+.project:hover,
+.project-focus {
   box-shadow: var(--cmn-box-shadow);
   border-radius: 10px;
   transform: scale(1.2); 
@@ -258,7 +259,8 @@ button a {
   inset: 0;
 }
 
-.project:hover .project-overlay {
+.project:hover .project-overlay,
+.project-focus .project-overlay {
   opacity: 1;
   background: rgba(0, 0, 0, 0.7);
 }
@@ -275,7 +277,8 @@ button a {
   padding: .5rem 0;
 }
 
-.project:hover .project-overlay .go-to {
+.project:hover .project-overlay .go-to,
+.project-focus .project-overlay .go-to {
   visibility: visible;
   transform: translateY(200%);
 }

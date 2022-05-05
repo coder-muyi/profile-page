@@ -14,13 +14,13 @@ const Info = () => {
         <p className="occupation">Frontend Developer</p>
         <p className="website">codermuyi.vercel.app</p>
         <div className="Info--content_btns">
-          <button className="email-btn">
+          <button className="email-btn" tabIndex={-1}>
             <a href="mailto:oluwamuyiwaadepoju@gmail.com">
               <MailIcon />
               <span>Email</span>
             </a>
           </button>
-          <button className="linkedin-btn">
+          <button className="linkedin-btn" tabIndex={-1}>
             <a href="https://www.linkedin.com/in/oluwamuyiwa-adepoju-2b0948237/">
               <LinkedInIcon />
               <span>LinkedIn</span>

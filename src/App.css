@@ -13,12 +13,16 @@ body {
   transition-duration: .25s;
 }
 
+*:focus {
+  outline-color: var(--sec-color)
+}
+
 .App {
   --bg-color: #F5F5F5;
   --header-txt-color: #2B283A;
   --occupation-txt-color: #F47D27;
   --web-txt-color: #4A4E74;
-  --linkedin-blue: #297FE5;
+  --sec-color: #297FE5;
   --paragraph-txt-color: #4A4E74;
   --footer-bg-color: #D5D4D8;
 
@@ -32,7 +36,7 @@ body {
   --header-txt-color: white;
   --occupation-txt-color: #F3BF99;
   --web-txt-color: white;
-  --linkedin-blue: #5093E2;
+  --sec-color: #5093E2;
   --paragraph-txt-color: #DCDCDC;
   --footer-bg-color: #161619;
 
@@ -50,7 +54,7 @@ h2::before {
   width: 4px;
   height: 120%;
   position: absolute;
-  background-color: var(--linkedin-blue);
+  background-color: var(--sec-color);
   left: -1rem;
 }
 
@@ -70,7 +74,7 @@ h2::before {
   content: "";
   position: absolute;
   inset: 0;
-  background-color: var(--linkedin-blue);
+  background-color: var(--sec-color);
   z-index: 1;
   clip-path: polygon(0 0, 48% 45%, 100% 35%, 100% 70%, 48% 57%, 0 100%, 43% 100%, 0% 70%, 0% 35%, 43% 0);
 }
@@ -115,12 +119,12 @@ button {
   border-radius: 6px;
   font-size: 1rem;
   border: 0;
+  padding: 0;
 }
 
 button a {
   color: inherit;
   text-decoration: none;
-  display: inline-block;
   display: flex;
   justify-content: center;
   gap: 10px;
@@ -139,7 +143,7 @@ button a {
 }
 
 .Info--content_btns .linkedin-btn {
-  background-color: var(--linkedin-blue);
+  background-color: var(--sec-color);
   color: white;
 }
 
@@ -178,7 +182,7 @@ button a {
   content: "";
   position: absolute;
   padding: 1em;
-  background-color: var(--linkedin-blue);
+  background-color: var(--sec-color);
   clip-path: polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%);
 }
 
@@ -195,7 +199,7 @@ button a {
 }
 
 .project-bg {
-  fill: var(--linkedin-blue);
+  fill: var(--sec-color);
   stroke-width: 3;
 }
 
@@ -211,15 +215,15 @@ button a {
 
 .project {
   width: var(--project-card-size);
-  height: var(--project-card-size);
-  margin: 3em;
-  border-radius: 50%;
+  height: calc(var(--project-card-size)/1.2);
+  margin: 2em;
+  border-radius: 50px;
   overflow: hidden;
   mask-image: radial-gradient(white, black);
   -webkit-mask-image: -webkit-radial-gradient(white, black);
   background: white;
   transition-timing-function: cubic-bezier(0.68, -0.55, 0.27, 1.55);
-  border: .1em solid var(--linkedin-blue);
+  border: .1em solid var(--sec-color);
 }
 
 .dark-app .project {
@@ -237,7 +241,7 @@ button a {
   box-shadow: var(--cmn-box-shadow);
   margin: 0;
   padding-block: .5em;
-  background-color: var(--linkedin-blue);
+  background-color: var(--sec-color);
   color: white;
   font-size: .8rem;
 }
@@ -270,7 +274,7 @@ button a {
   transition-delay: .3s;
   visibility: hidden;
   background-color: white;
-  color: var(--linkedin-blue);
+  color: var(--sec-color);
 }
 
 .project-overlay .go-to a {
@@ -295,7 +299,8 @@ button a {
   height: 20px;
 }
 
-.project-overlay .go-to:hover .arrow {
+.project-overlay .go-to:hover .arrow,
+.project-overlay .go-to a:focus .arrow {
   opacity: 1;
   width: 20%;
 }

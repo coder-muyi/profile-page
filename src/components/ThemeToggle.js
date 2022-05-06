@@ -58,7 +58,7 @@ const Toggle = styled.input.attrs({
     border-radius: 100%;
     transition-duration: .3s;
     z-index: 3;
-    background: var(--linkedin-blue);
+    background: var(--sec-color);
   }
   
   &:checked::before {

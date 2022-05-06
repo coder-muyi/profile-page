@@ -3,35 +3,43 @@ import { ReactComponent as Bg } from "../assets/project-bg.svg"
 import { projectsList } from "../assets/data"
 import { useState, useRef, useEffect } from "react"
 
+let listItems = []
+
 const Projects = () => {
   const [isLiFocused, setIsLiFocus] = useState({})
-  // const [focusClassName, setFocusClassName] = useState("")
+  const [focusClassName, setFocusClassName] = useState("")
   const element = useRef({})
 
   useEffect(() => {
     const lis = element.current.children
    
-    Array.from(lis, li => {
+    listItems = Array.from(lis, li => {
       const isFocused = li === document.activeElement
       setIsLiFocus(prev => ({...prev, [li.id]: isFocused}))
-      return ""
+      return li
     })
   }, [])
 
   function checkFocus(event) {
-    event.stopPropagation()
     const {type, target} = event
     
     setIsLiFocus(prev => ({
       ...prev,
       [target.id]: !prev[target.id]
     }))
-
-    if (type === "focus") {
+    
+    // console.log(listItems)
+    console.log(isLiFocused[target.id])
+    if (type === "focus" && isLiFocused[target.id]) {
       // setFocusClassName("project-focus")
+      // listItems[target.id].classList.add("project-focus")
+      // target.querySelector(".go-to a").focus()
       target.classList.add("project-focus")
+      // console.log(target.querySelector(".go-to a"))
     } else {
+      // setFocusClassName("")
       target.classList.remove("project-focus")
+      // listItems[target.id].classList.remove("project-focus")
     }
   }
 
@@ -51,11 +59,12 @@ const Projects = () => {
         {
           projectsList.map((project, key) => 
             <li 
-              className="project"
+              className={`project ${focusClassName}`}
               id={key}
               key={key} 
               tabIndex="0"
               onFocus={checkFocus}
+              onBlur={checkFocus}
             >
               <p className="project-title">{project.name}</p>
               <div className="project-preview">

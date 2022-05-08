@@ -1,6 +1,11 @@
 const rootUrl = `${process.env.PUBLIC_URL}/project_imgs`
 
 export const projectsList = [
+  { 
+    name: "Geoid (Ongoing)",
+    imgSrc: `${rootUrl}/geoid.png`,
+    url: "https://geoid.vercel.app"
+  },
   {
     name: "Material UI Colors Demo",
     imgSrc: `${rootUrl}/material-ui-color-preview.png`,
@@ -30,11 +35,6 @@ export const projectsList = [
     name: "Blogr (Desktop view is incomplete)",
     imgSrc: `${rootUrl}/blogr.png`,
     url: "https://samuel-username.github.io/blogr-landing-page"
-  },
-  { 
-    name: "Geoid (Ongoing)",
-    imgSrc: `${rootUrl}/geoid.png`,
-    url: "https://geoid.vercel.app"
   },
   { 
     name: "Markdown Hero",

@@ -219,8 +219,11 @@ button a {
   margin: 2em;
   border-radius: 50px;
   overflow: hidden;
+  
+  /* for safari */
   mask-image: radial-gradient(white, black);
   -webkit-mask-image: -webkit-radial-gradient(white, black);
+
   background: white;
   transition-timing-function: cubic-bezier(0.68, -0.55, 0.27, 1.55);
   border: .1em solid var(--sec-color);
@@ -249,12 +252,6 @@ button a {
 .project-preview {
   height: 100%;
   position: relative;
-}
-
-.project-preview iframe {
-  width: var(--project-card-size);
-  height: var(--project-card-size);
-  border: 0;
 }
 
 .project-overlay {
@@ -327,7 +324,7 @@ button a {
   cursor: pointer;
 }
 
-@media (min-width: 620px) {
+@media (min-width: 768px) {
   .App {
     display: grid;
     grid-template-columns: 1fr 1fr;

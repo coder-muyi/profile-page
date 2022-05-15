@@ -1,4 +1,4 @@
-import ProfileImg from "../assets/profile-img-3.jpg"
+import ProfileImg from "../assets/profile-img-3.png"
 import { ReactComponent as MailIcon } from "../assets/icons/mail.svg"
 import { ReactComponent as LinkedInIcon } from "../assets/icons/linkedin.svg"
 

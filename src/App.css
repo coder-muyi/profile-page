@@ -267,11 +267,14 @@ button a {
 }
 
 .project-overlay .go-to {
-  transition-timing-function: cubic-bezier(.22,.68,0,1.71);
-  transition-delay: .3s;
+  transition-timing-function: cubic-bezier(.22,.68,0,2.71);
+  transition-delay: .25s;
   visibility: hidden;
   background-color: white;
   color: var(--sec-color);
+  width: 40%;
+  font-size: .95em;
+
 }
 
 .project-overlay .go-to a {
@@ -281,7 +284,7 @@ button a {
 .project:hover .project-overlay .go-to,
 .project-focus .project-overlay .go-to {
   visibility: visible;
-  transform: translateY(200%);
+  transform: translateY(180%);
 }
 
 .dark-app .project-overlay .go-to {

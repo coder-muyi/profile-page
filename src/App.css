@@ -240,6 +240,10 @@ button a {
   transform: scale(1.2); 
 }
 
+.project:focus {
+  border: .3em solid var(--sec-color);
+}
+
 .project-title {
   box-shadow: var(--cmn-box-shadow);
   margin: 0;

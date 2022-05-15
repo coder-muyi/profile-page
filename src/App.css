@@ -367,6 +367,10 @@ button a {
   .Info::before {
     left: -50%;
   }
+
+  .Info--img img {
+    border-bottom: 2em solid var(--bg-color);
+  }
   
   .project-title {
     padding-block: 1em;

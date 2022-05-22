@@ -12,7 +12,7 @@ const Info = () => {
       <div className="Info--contents">
         <h1 className="name">Samuel Adepoju</h1>
         <p className="occupation">Frontend Developer</p>
-        <p className="website">codermuyi.vercel.app</p>
+        {/* <p className="website">codermuyi.vercel.app</p> */}
         <div className="Info--content_btns">
           <button className="email-btn" tabIndex={-1}>
             <a href="mailto:oluwamuyiwaadepoju@gmail.com">

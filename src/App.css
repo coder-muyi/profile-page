@@ -99,7 +99,7 @@ h2::before {
   margin: 0;
   font-weight: 400;
   color: var(--occupation-txt-color);
-
+  margin-bottom: 1rem;
 }
 
 .Info--contents .website {

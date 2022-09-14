@@ -5,6 +5,7 @@ import Info from "./components/Info"
 import About from "./components/About"
 import Projects from "./components/Projects"
 import Footer from "./components/Footer"
+import MajorChangesBanner from "./components/MajorChangesBanner"
 
 const App = () => {
   const [isDarkMode, setDarkMode] = useState(false)
@@ -19,6 +20,7 @@ const App = () => {
 
   return (
     <div className={`App ${isDarkMode ? "dark-app" : ""}`}>
+      <MajorChangesBanner />
       <ThemeToggle changeTheme={changeTheme} isDarkMode={isDarkMode} />
       <Info />
       <About />

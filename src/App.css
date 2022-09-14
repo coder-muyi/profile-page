@@ -3,6 +3,7 @@
 :root {
   --cmn-box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.2);
   --project-card-size: 250px;
+  --banner-anim:  4s ease-out 0s 1;
 }
 
 body {
@@ -334,26 +335,19 @@ button a {
   .App {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: repeat(4, auto);
+    grid-template-rows: repeat(5, auto);
+    /* grid-template-rows: min-content auto; */
     gap: 2rem;
   }
 
   .Info {
     grid-column: 1 / 2;
-    grid-row: 1 / 3;
+    grid-row: 2 / 4;
     justify-self: end;
     margin-block: auto;
     padding-block: 3rem;
-  }
-
-  .About,
-  .Interests {
-    max-width: 400px;
-  }
-
-  .About {
-    display: grid;
-    align-content: end;
+    animation: change-grid var(--banner-anim);
+    animation-fill-mode: forwards;
   }
 
   .Projects {
@@ -381,5 +375,20 @@ button a {
   .project-title {
     padding-block: 1em;
     font-size: 1rem;
+  }
+}
+
+@keyframes hide-banner {
+  90% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes change-grid {
+  100% {
+    grid-row: 1 / 3;
   }
 }

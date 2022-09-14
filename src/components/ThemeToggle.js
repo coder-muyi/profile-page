@@ -1,4 +1,4 @@
-import styled from "styled-components"
+import styled from "styled-components/macro"
 
 const ThemeToggle = ({ changeTheme, isDarkMode }) => {
   return (
@@ -11,7 +11,7 @@ const ThemeToggle = ({ changeTheme, isDarkMode }) => {
   )
 }
 
-const StyledThemeToggle = styled.form`
+const StyledThemeToggle = styled.div`
   position: fixed;
   top: 10px;
   left: calc(50% - 60px);
@@ -20,7 +20,6 @@ const StyledThemeToggle = styled.form`
   user-select: none;
   box-shadow: 0px 3px 4px rgba(0, 0, 0, 0.1);
   border-radius: 100px;
-  cursor: pointer;
   z-index: 1000;
   width: 60px;
   height: 30px;
@@ -29,8 +28,13 @@ const StyledThemeToggle = styled.form`
     cursor: pointer;
   }
 
-  &:hover {
-  color: black;
+  &::after {
+    content: "Change Theme";
+    position: absolute;
+    top: 20%;
+    left: 120%;
+    width: 200%;
+    color: ${props => props.checked ? "#ddd" : "#222"};
   }
 `;
 
@@ -63,16 +67,6 @@ const Toggle = styled.input.attrs({
   
   &:checked::before {
     transform: translate(100%);
-  }
-
-  &::after {
-    content: "Change Theme";
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    left: 120%;
-    width: 100%;
-    color: ${props => props.checked ? "#ddd" : "#222"};
   }
 `;
 

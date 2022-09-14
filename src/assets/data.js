@@ -36,6 +36,7 @@ export const projectsList = [
     imgSrc: `${rootUrl}/blogr.png`,
     url: "https://samuel-username.github.io/blogr-landing-page"
   },
+  /*
   { 
     name: "Markdown Hero",
     imgSrc: `${rootUrl}/coming-soon.png`,
@@ -46,4 +47,5 @@ export const projectsList = [
     imgSrc: `${rootUrl}/coming-soon.png`,
     url: ""
   }
+  */
 ]

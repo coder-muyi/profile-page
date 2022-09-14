@@ -20,9 +20,9 @@ const Container = styled.div`
   display: flex;
   justify-content: center;
   flex-direction: column;
-  grid-row: 2 / 4;
-  animation: change-grid var(--banner-anim);
-  animation-fill-mode: forwards;
+  grid-row: 1 / 3;
+  /* animation: change-grid var(--banner-anim);
+  animation-fill-mode: forwards; */
 
   @media (min-width: 768px) {
     max-width: 400px;

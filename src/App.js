@@ -6,6 +6,7 @@ import About from "./components/About"
 import Projects from "./components/Projects"
 import Footer from "./components/Footer"
 import MajorChangesBanner from "./components/MajorChangesBanner"
+import styled from "styled-components/macro"
 
 const App = () => {
   const [isDarkMode, setDarkMode] = useState(false)
@@ -22,12 +23,25 @@ const App = () => {
     <div className={`App ${isDarkMode ? "dark-app" : ""}`}>
       <MajorChangesBanner />
       <ThemeToggle changeTheme={changeTheme} isDarkMode={isDarkMode} />
-      <Info />
-      <About />
-      <Projects />
-      <Footer />
+      <Grid>
+        <Info />
+        <About />
+        <Projects />
+        <Footer />
+      </Grid>
     </div>
   )
 }
+
+const Grid = styled.div`
+  @media (min-width: 768px) {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: repeat(5, auto);
+    /* grid-template-rows: min-content auto; */
+    gap: 2rem;
+  }
+
+`
 
 export default App

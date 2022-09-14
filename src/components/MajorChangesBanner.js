@@ -13,11 +13,10 @@ const Container = styled.div`
   background-color: rgb(248,180,1);
   padding: 3rem 2rem 2rem;
   margin: 0;
-  width: 100%;
-  grid-column: 1 / -1;
-  transition-duration: 1s;
+  /* width: 100%; */
+  /* transition-duration: 1s; */
   overflow: hidden;
-  animation: hide-banner var(--banner-anim);
+  animation: hide-banner 1s ease-out 4s 1;
   animation-fill-mode: forwards;
   
   p {

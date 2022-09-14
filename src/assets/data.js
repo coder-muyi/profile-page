@@ -2,7 +2,7 @@ const rootUrl = `${process.env.PUBLIC_URL}/project_imgs`
 
 export const projectsList = [
   { 
-    name: "Geoid (Ongoing)",
+    name: "Geoid",
     imgSrc: `${rootUrl}/geoid.png`,
     url: "https://geoid.vercel.app"
   },

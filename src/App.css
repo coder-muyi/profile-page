@@ -3,7 +3,6 @@
 :root {
   --cmn-box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.2);
   --project-card-size: 250px;
-  /* --banner-anim: 5s ease-out 0s 1; */
 }
 
 body {
@@ -379,8 +378,10 @@ button a {
 }
 
 @keyframes hide-banner {
+  10% {
+    top: 0;
+  }
   100% {
-    height: 0;
-    padding: 0;
+    top: -100%;
   }
 }

@@ -9,16 +9,19 @@ const MajorChangesBanner = () => {
 }
 
 const Container = styled.div`
-  /* display: none; */
   background-color: rgb(248,180,1);
   padding: 3rem 2rem 2rem;
   margin: 0;
-  /* width: 100%; */
-  /* transition-duration: 1s; */
   overflow: hidden;
-  animation: hide-banner 1s ease-out 4s 1;
+  animation: hide-banner 3s ease-out 4s 1;
   animation-fill-mode: forwards;
-  
+
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  right: 0;
+  top: 0;
+
   p {
     font-weight: bold;
     font-family: monospace;

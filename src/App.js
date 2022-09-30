@@ -2,7 +2,6 @@ import { useState, useEffect } from "react"
 import "./App.css"
 import ThemeToggle from "./components/ThemeToggle"
 import Info from "./components/Info"
-import About from "./components/About"
 import Projects from "./components/Projects"
 import Footer from "./components/Footer"
 import MajorChangesBanner from "./components/MajorChangesBanner"
@@ -25,7 +24,6 @@ const App = () => {
       <ThemeToggle changeTheme={changeTheme} isDarkMode={isDarkMode} />
       <Grid>
         <Info />
-        <About />
         <Projects />
         <Footer />
       </Grid>
@@ -45,3 +43,5 @@ const Grid = styled.div`
 `
 
 export default App
+
+console.log("Samuel Adepoju MADE THIS!!! 😁😁")

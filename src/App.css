@@ -155,6 +155,13 @@ button a {
   border: .1em solid var(--sec-color);
 }
 
+.project.hide-project-item {
+  transition-delay: 3s;
+  opacity: 0;
+  transform: translateX(-100%);
+  /* transform: none; */
+}
+
 .dark-app .project {
   box-shadow: 0px 6px 10px rgba(255, 255, 255, 0.5);
 }
@@ -185,9 +192,10 @@ button a {
 }
 
 .project-overlay {
-  opacity: 0;
+  /* opacity: 0; */
   position: absolute;
   inset: 0;
+  /* display: flex; */
 }
 
 .project:hover .project-overlay,
@@ -202,18 +210,21 @@ button a {
   visibility: hidden;
   background-color: white;
   color: var(--sec-color);
-  width: 40%;
-  font-size: .95em;
+  width: 30%;
+  font-size: .7em;
+  margin-inline: .5rem;
 }
 
 .project-overlay .go-to a {
-  padding: .5rem 0;
+  padding: .3rem 0;
+  display: inline-flex;
+  align-items: center;
 }
 
 .project:hover .project-overlay .go-to,
 .project-focus .project-overlay .go-to {
   visibility: visible;
-  transform: translateY(180%);
+  transform: translateY(200%);
 }
 
 .dark-app .project-overlay .go-to {

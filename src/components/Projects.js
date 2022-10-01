@@ -1,7 +1,7 @@
-import { ReactComponent as Arrow } from "../assets/icons/arrow-right.svg"
+import { useRef, useEffect } from "react"
 import { ReactComponent as Bg } from "../assets/project-bg.svg"
 import { projectsList } from "../assets/data"
-import { useRef, useEffect } from "react"
+import ProjectItem from './ProjectItem'
 
 let listItems = []
 
@@ -45,33 +45,13 @@ const Projects = () => {
       <ul className="projects-list" ref={element}>
         {
           projectsList.map((project, key) =>
-            <li
-              className={`project`}
-              id={key}
+            <ProjectItem 
               key={key}
-              tabIndex="0"
-              onMouseEnter={checkHover}
-            >
-              <p className="project-title">{project.name}</p>
-              <div className="project-preview">
-                <img
-                  src={project.imgSrc}
-                  alt={project.name}
-                  width="100%"
-                  loading="lazy"
-                />
-                <div className="project-overlay">
-                  <button className="go-to" tabIndex={-1}>
-                    <a
-                      href={project.url}
-                      onBlur={removeLiFocusClass}
-                    >
-                      Visit site <Arrow />
-                    </a>
-                  </button>
-                </div>
-              </div>
-            </li>
+              id={key}
+              {...project}
+              checkHover={checkHover}
+              removeLiFocusClass={removeLiFocusClass}
+            />
           )
         }
       </ul>

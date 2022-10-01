@@ -43,4 +43,4 @@ const Grid = styled.div`
 
 export default App
 
-// console.log("Samuel Adepoju MADE THIS!!! 😁😁")
+console.log("Samuel Adepoju MADE THIS!!! 😁😁")

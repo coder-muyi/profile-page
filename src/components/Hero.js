@@ -4,6 +4,7 @@ import ProfileImg from "../assets/profile-img-3.webp"
 import { ReactComponent as MailIcon } from "../assets/icons/mail.svg"
 import { ReactComponent as LinkedInIcon } from "../assets/icons/linkedin.svg"
 import { devices } from '../assets/data'
+import useScrollObserver from '../assets/hooks/useScrollObserver'
 import Canvas from "./Canvas"
 
 function getWindowSize() {
@@ -12,23 +13,32 @@ function getWindowSize() {
 }
 
 const Hero = ({isDarkMode}) => {
-
   const heroRef = useRef({})
   const [heroDimension, setheroDimension] = useState(getWindowSize())
+  
+  const observer = useScrollObserver((entry) => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('do-magic')
+    }
+  })
 
   useEffect(() => {
-    const element = heroRef.current
+    const heroElement = heroRef.current
 
     let listener = () => {
       setheroDimension({
-        width: element.clientWidth,
-        height: element.clientHeight
+        width: heroElement.clientWidth,
+        height: heroElement.clientHeight
       })
     }
-
     window.addEventListener('resize', listener)
+
+    // let addHeroClass = () => heroElement.classList.add('do-magic')
+    // window.addEventListener('load', addHeroClass)
+
+    observer.observe(heroElement)
     return () => window.removeEventListener('resize', listener)
-  }, [])
+  }, [observer])
 
   return (
     <StyledHero ref={heroRef}>
@@ -79,6 +89,9 @@ const StyledHero = styled.div`
   min-height: 100vh;
   position: relative;
   grid-column: 1 / -1;
+  overflow: hidden;
+  transition: all 1s ease-in;
+  opacity: 0;
 
   & > * {
     z-index: 15;
@@ -98,6 +111,50 @@ const StyledHero = styled.div`
   }
   @media (${devices.laptop}) {
     gap: 3rem;
+  }
+
+  --tmf: cubic-bezier(0.68, -0.55, 0.27, 1.55);
+
+  .profile-img,
+  .about, .interests {
+    transition: 1s var(--tmf);
+    opacity: 0;
+    transform: translateX(-100%);
+  }
+  .about, .interests {
+    transition: 1.5s var(--tmf);
+    transform: translateX(100%)
+  }
+
+  .interests {
+    transition: 1.5s var(--tmf) 200ms;
+  }
+
+  .name {
+    transition: .5s var(--tmf) 500ms;
+  } .occupation {
+    transition: .5s var(--tmf) 600ms;
+  } .website{
+    transition: .5s var(--tmf) 700ms;
+  } .Info--content_btns {
+    transition: .5s var(--tmf) 800ms;
+  }
+
+  .name, .occupation, .website, .Info--content_btns {
+    transform: translateX(-100%);
+  }
+
+  &.do-magic {
+    opacity: 1;
+
+    .profile-img,
+    .about, .interests {
+      opacity: 1;
+      transform: none;
+    }
+    .name, .occupation, .website, .Info--content_btns {
+      transform: none;
+    }
   }
 `
 

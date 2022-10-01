@@ -15,7 +15,6 @@ const StyledThemeToggle = styled.div`
   position: fixed;
   top: 10px;
   left: calc(50% - 60px);
-  color: white;
   border-radius: 10px;
   user-select: none;
   box-shadow: 0px 3px 4px rgba(0, 0, 0, 0.1);
@@ -34,7 +33,8 @@ const StyledThemeToggle = styled.div`
     top: 20%;
     left: 120%;
     width: 200%;
-    color: ${props => props.checked ? "#ddd" : "#222"};
+    color: var(--paragraph-txt-color);
+    transform: translateY(-15%);
   }
 `;
 

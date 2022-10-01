@@ -1,11 +1,12 @@
 import { useState, useEffect } from "react"
 import "./App.css"
 import ThemeToggle from "./components/ThemeToggle"
-import Info from "./components/Info"
+import Hero from "./components/Hero"
 import Projects from "./components/Projects"
 import Footer from "./components/Footer"
-import MajorChangesBanner from "./components/MajorChangesBanner"
+// import MajorChangesBanner from "./components/MajorChangesBanner"
 import styled from "styled-components/macro"
+import { devices } from './assets/data'
 
 const App = () => {
   const [isDarkMode, setDarkMode] = useState(false)
@@ -20,10 +21,11 @@ const App = () => {
 
   return (
     <div className={`App ${isDarkMode ? "dark-app" : ""}`}>
-      <MajorChangesBanner />
+     {/* <div className='App'> */}
+      {/* <MajorChangesBanner /> */}
       <ThemeToggle changeTheme={changeTheme} isDarkMode={isDarkMode} />
       <Grid>
-        <Info />
+        <Hero isDarkMode={isDarkMode}/>
         <Projects />
         <Footer />
       </Grid>
@@ -32,16 +34,13 @@ const App = () => {
 }
 
 const Grid = styled.div`
-  @media (min-width: 768px) {
+  @media (${devices.tablet}) {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: repeat(5, auto);
-    /* grid-template-rows: min-content auto; */
-    gap: 2rem;
   }
 
 `
 
 export default App
 
-console.log("Samuel Adepoju MADE THIS!!! 😁😁")
+// console.log("Samuel Adepoju MADE THIS!!! 😁😁")

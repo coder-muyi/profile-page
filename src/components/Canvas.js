@@ -4,7 +4,7 @@ import { useOutletContext } from 'react-router-dom'
 export default function Canvas({dimension}) {
   const canvasRef = useRef({})
   const [isDarkMode] = useOutletContext()
-  const color = isDarkMode ? 'rgba(255, 255, 255, .8)' : 'rgba(245,98,93, .3)'
+  const color = isDarkMode ? 'rgba(255, 255, 255, .5)' : 'rgba(245,98,93, .3)'
 
   useEffect(() => {
     const canvas = canvasRef.current

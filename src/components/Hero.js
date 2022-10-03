@@ -1,6 +1,6 @@
 import { useRef, useEffect, useState } from 'react'
 import styled from 'styled-components/macro'
-import ProfileImg from "../assets/profile-img-3.webp"
+import ProfileImg from "../assets/profile-img.webp"
 import { ReactComponent as MailIcon } from "../assets/icons/mail.svg"
 import { ReactComponent as LinkedInIcon } from "../assets/icons/linkedin.svg"
 import { devices } from '../assets/data'
@@ -52,7 +52,7 @@ const Hero = ({isDarkMode}) => {
           <img src={ProfileImg} alt="profile" />
         </div>
         <Details>
-          <h1 className="name">Samuel Adepoju</h1>
+          <h1 className="name"><span className='small'>Hi, I am</span>Samuel Adepoju</h1>
           <p className="occupation">Frontend Developer</p>
           <div className="Info--content_btns">
             <button className="email-btn" tabIndex={-1}>
@@ -200,6 +200,12 @@ const Details = styled.div`
   .name {
     margin-bottom: 0;
     font-size: 3rem;
+    line-height: 1;
+
+    .small {
+      display: block;
+      font-size: 1rem;
+    }
   }
 
   .occupation {

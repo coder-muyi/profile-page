@@ -1,6 +1,7 @@
 import { useRef, useEffect } from 'react'
 import { ReactComponent as Arrow } from "../assets/icons/arrow-right.svg"
 import useScrollObserver from '../assets/hooks/useScrollObserver'
+import { Link } from 'react-router-dom'
 
 const ProjectItem = props => {
   const { id, name, imgSrc, url, checkHover, removeLiFocusClass} = props;
@@ -34,9 +35,9 @@ const ProjectItem = props => {
         />
         <div className="project-overlay">
           <button className="go-to" tabIndex={-1}>
-            <a href={`/projects/${name}`}>
+            <Link to='/working-on-it'>
               Learn More <Arrow />
-            </a>
+            </Link>
           </button>
           <button className="go-to" tabIndex={-1}>
             <a href={url} onBlur={removeLiFocusClass}>

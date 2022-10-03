@@ -1,18 +1,18 @@
 import { useRef, useEffect, useState } from 'react'
 import styled from 'styled-components/macro'
+import Canvas from "./Canvas"
 import ProfileImg from "../assets/profile-img.webp"
 import { ReactComponent as MailIcon } from "../assets/icons/mail.svg"
 import { ReactComponent as LinkedInIcon } from "../assets/icons/linkedin.svg"
 import { devices } from '../assets/data'
 import useScrollObserver from '../assets/hooks/useScrollObserver'
-import Canvas from "./Canvas"
 
 function getWindowSize() {
   const {innerWidth, innerHeight} = window;
   return {width: innerWidth, height: innerHeight};
 }
 
-const Hero = ({isDarkMode}) => {
+const Hero = () => {
   const heroRef = useRef({})
   const [heroDimension, setheroDimension] = useState(getWindowSize())
   
@@ -33,20 +33,13 @@ const Hero = ({isDarkMode}) => {
     }
     window.addEventListener('resize', listener)
 
-    // let addHeroClass = () => heroElement.classList.add('do-magic')
-    // window.addEventListener('load', addHeroClass)
-
     observer.observe(heroElement)
     return () => window.removeEventListener('resize', listener)
   }, [observer])
 
   return (
     <StyledHero ref={heroRef}>
-      <Canvas 
-        dimension={heroDimension} 
-        color={isDarkMode ? 'rgba(255, 255, 255, .8)' : 'rgba(245,98,93, .3)'}
-      />
-
+      <Canvas dimension={heroDimension} />
       <InfoOne>
         <div className="profile-img">
           <img src={ProfileImg} alt="profile" />
@@ -193,6 +186,10 @@ const InfoOne = styled.div`
 
   @media (${devices.tablet}) {
     grid-column: 1 / 2;
+  }
+  @media (${devices.laptopL}) {
+    display: grid;
+    align-content: center;
   }
 `
 

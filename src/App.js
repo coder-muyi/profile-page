@@ -1,45 +1,22 @@
-import { useState, useEffect } from "react"
+import { Route, Routes, BrowserRouter } from 'react-router-dom'
 import "./App.css"
-import ThemeToggle from "./components/ThemeToggle"
-import Hero from "./components/Hero"
-import Projects from "./components/Projects"
-import Footer from "./components/Footer"
-// import MajorChangesBanner from "./components/MajorChangesBanner"
-import styled from "styled-components/macro"
-import { devices } from './assets/data'
+import Home from './pages/Home'
+import WorkingOnIt from './pages/WorkingOnIt';
+import SharedLayout from './components/SharedLayout'
 
 const App = () => {
-  const [isDarkMode, setDarkMode] = useState(false)
-
-  const changeTheme = event => setDarkMode(event.target.checked)
-
-  useEffect(() => {
-    if ((window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-      setDarkMode(true);
-    }
-  }, [])
 
   return (
-    <div className={`App ${isDarkMode ? "dark-app" : ""}`}>
-     {/* <div className='App'> */}
-      {/* <MajorChangesBanner /> */}
-      <ThemeToggle changeTheme={changeTheme} isDarkMode={isDarkMode} />
-      <Grid>
-        <Hero isDarkMode={isDarkMode}/>
-        <Projects />
-        <Footer />
-      </Grid>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<SharedLayout />}>
+          <Route index element={<Home />} />
+          <Route path="/working-on-it" element={<WorkingOnIt />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
   )
 }
-
-const Grid = styled.div`
-  @media (${devices.tablet}) {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-  }
-
-`
 
 export default App
 

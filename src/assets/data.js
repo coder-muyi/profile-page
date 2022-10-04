@@ -34,7 +34,7 @@ export const projectsList = [
   {
     name: "Moviemanic",
     imgSrc: `${rootUrl}/moviemanic.png`,
-    url: "https://samuel-username.github.io/Movie-list"
+    url: "https://codermuyi.github.io/Movie-list"
   },
   {
     name: "My blackjack",

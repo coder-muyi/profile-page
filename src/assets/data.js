@@ -21,6 +21,11 @@ export const devices = {
 };
 
 export const projectsList = [
+  {
+    name: "Moviemanic 2.0",
+    imgSrc: `${rootUrl}/moviemanic-2.png`,
+    url: "https://moviemanic.vercel.app"
+  },
   { 
     name: "Geoid",
     imgSrc: `${rootUrl}/geoid.png`,
@@ -51,12 +56,12 @@ export const projectsList = [
     imgSrc: `${rootUrl}/base-apparel.png`,
     url: "https://samuel-username.github.io/coming-soon-landing-page"
   },
+  /*
   {
     name: "Blogr (Desktop view is incomplete)",
     imgSrc: `${rootUrl}/blogr.png`,
     url: "https://samuel-username.github.io/blogr-landing-page"
   },
-  /*
   { 
     name: "Markdown Hero",
     imgSrc: `${rootUrl}/coming-soon.png`,

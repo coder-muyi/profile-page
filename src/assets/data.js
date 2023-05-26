@@ -1,13 +1,13 @@
-const rootUrl = `${process.env.PUBLIC_URL}/project_imgs`
+const rootUrl = `${process.env.PUBLIC_URL}/project_imgs`;
 
 const sizes = {
-  mobileS: '320px',
-  mobileM: '375px',
-  mobileL: '425px',
-  tablet: '768px',
-  laptop: '1024px',
-  laptopL: '1440px',
-  desktop: '2560px',
+  mobileS: "320px",
+  mobileM: "375px",
+  mobileL: "425px",
+  tablet: "768px",
+  laptop: "1024px",
+  laptopL: "1440px",
+  desktop: "2560px",
 };
 
 export const devices = {
@@ -24,12 +24,12 @@ export const projectsList = [
   {
     name: "Moviemanic 2.0",
     imgSrc: `${rootUrl}/moviemanic-2.png`,
-    url: "https://moviemanic.vercel.app"
+    url: "https://moviemanic.vercel.app",
   },
-  { 
+  {
     name: "Geoid",
     imgSrc: `${rootUrl}/geoid.png`,
-    url: "https://geoid.vercel.app"
+    url: "https://geoid.vercel.app",
   },
   {
     name: "Material UI Colors Demo",
@@ -39,22 +39,22 @@ export const projectsList = [
   {
     name: "Moviemanic",
     imgSrc: `${rootUrl}/moviemanic.png`,
-    url: "https://codermuyi.github.io/Movie-list"
+    url: "https://codermuyi.github.io/Movie-list",
   },
   {
     name: "My blackjack",
     imgSrc: `${rootUrl}/sam-blackjack.png`,
-    url: "https://samuel-username.github.io/blackjack"
+    url: "https://samuel-username.github.io/blackjack",
   },
   {
     name: "Huddle landing page",
     imgSrc: `${rootUrl}/huddle.png`,
-    url: "https://samuel-username.github.io/landing_page"
+    url: "https://samuel-username.github.io/landing_page",
   },
   {
     name: "Base Apparel",
     imgSrc: `${rootUrl}/base-apparel.png`,
-    url: "https://samuel-username.github.io/coming-soon-landing-page"
+    url: "https://samuel-username.github.io/coming-soon-landing-page",
   },
   /*
   {
@@ -73,4 +73,4 @@ export const projectsList = [
     url: ""
   }
   */
-]
+];

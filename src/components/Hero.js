@@ -1,41 +1,41 @@
-import { useRef, useEffect, useState } from 'react'
-import styled from 'styled-components/macro'
-import Canvas from "./Canvas"
-import ProfileImg from "../assets/profile-img.webp"
-import { ReactComponent as MailIcon } from "../assets/icons/mail.svg"
-import { ReactComponent as LinkedInIcon } from "../assets/icons/linkedin.svg"
-import { devices } from '../assets/data'
-import useScrollObserver from '../assets/hooks/useScrollObserver'
+import { useRef, useEffect, useState } from "react";
+import styled from "styled-components/macro";
+import Canvas from "./Canvas";
+import ProfileImg from "../assets/profile-img.webp";
+import { ReactComponent as MailIcon } from "../assets/icons/mail.svg";
+import { ReactComponent as LinkedInIcon } from "../assets/icons/linkedin.svg";
+import { devices } from "../assets/data";
+import useScrollObserver from "../assets/hooks/useScrollObserver";
 
 function getWindowSize() {
-  const {innerWidth, innerHeight} = window;
-  return {width: innerWidth, height: innerHeight};
+  const { innerWidth, innerHeight } = window;
+  return { width: innerWidth, height: innerHeight };
 }
 
 const Hero = () => {
-  const heroRef = useRef({})
-  const [heroDimension, setheroDimension] = useState(getWindowSize())
-  
+  const heroRef = useRef({});
+  const [heroDimension, setheroDimension] = useState(getWindowSize());
+
   const observer = useScrollObserver((entry) => {
     if (entry.isIntersecting) {
-      entry.target.classList.add('do-magic')
+      entry.target.classList.add("do-magic");
     }
-  })
+  });
 
   useEffect(() => {
-    const heroElement = heroRef.current
+    const heroElement = heroRef.current;
 
     let listener = () => {
       setheroDimension({
         width: heroElement.clientWidth,
-        height: heroElement.clientHeight
-      })
-    }
-    window.addEventListener('resize', listener)
+        height: heroElement.clientHeight,
+      });
+    };
+    window.addEventListener("resize", listener);
 
-    observer.observe(heroElement)
-    return () => window.removeEventListener('resize', listener)
-  }, [observer])
+    observer.observe(heroElement);
+    return () => window.removeEventListener("resize", listener);
+  }, [observer]);
 
   return (
     <StyledHero ref={heroRef}>
@@ -45,7 +45,9 @@ const Hero = () => {
           <img src={ProfileImg} alt="profile" />
         </div>
         <Details>
-          <h1 className="name"><span className='small'>Hi, I am</span>Samuel Adepoju</h1>
+          <h1 className="name">
+            <span className="small">Hi, I am</span>Samuel Adepoju
+          </h1>
           <p className="occupation">Frontend Developer</p>
           <div className="Info--content_btns">
             <button className="email-btn" tabIndex={-1}>
@@ -67,16 +69,22 @@ const Hero = () => {
       <InfoTwo>
         <div className="about">
           <h2>About</h2>
-          <p className="para">I am a frontend developer with a particular interest in frontend frameworks. I try to keep up with new web development strategies and best practices, applying them in code as I learn.</p>
+          <p className="para">
+            I am a frontend developer with a particular interest in frontend
+            frameworks. I try to keep up with new web development strategies and
+            best practices, applying them in code as I learn.
+          </p>
         </div>
         <div className="interests">
           <h2>Interests</h2>
-          <p className="para">Movies. Internet. JavaScript. Music. Team work. Coding</p>
+          <p className="para">
+            Movies. Internet. JavaScript. Music. Team work. Coding
+          </p>
         </div>
       </InfoTwo>
     </StyledHero>
-  )
-}
+  );
+};
 
 const StyledHero = styled.div`
   min-height: 100vh;
@@ -109,14 +117,16 @@ const StyledHero = styled.div`
   --tmf: cubic-bezier(0.68, -0.55, 0.27, 1.55);
 
   .profile-img,
-  .about, .interests {
+  .about,
+  .interests {
     transition: 1s var(--tmf);
     opacity: 0;
     transform: translateX(-100%);
   }
-  .about, .interests {
+  .about,
+  .interests {
     transition: 1.5s var(--tmf);
-    transform: translateX(100%)
+    transform: translateX(100%);
   }
 
   .interests {
@@ -124,16 +134,22 @@ const StyledHero = styled.div`
   }
 
   .name {
-    transition: .5s var(--tmf) 500ms;
-  } .occupation {
-    transition: .5s var(--tmf) 600ms;
-  } .website{
-    transition: .5s var(--tmf) 700ms;
-  } .Info--content_btns {
-    transition: .5s var(--tmf) 800ms;
+    transition: 0.5s var(--tmf) 500ms;
+  }
+  .occupation {
+    transition: 0.5s var(--tmf) 600ms;
+  }
+  .website {
+    transition: 0.5s var(--tmf) 700ms;
+  }
+  .Info--content_btns {
+    transition: 0.5s var(--tmf) 800ms;
   }
 
-  .name, .occupation, .website, .Info--content_btns {
+  .name,
+  .occupation,
+  .website,
+  .Info--content_btns {
     transform: translateX(-100%);
   }
 
@@ -141,28 +157,43 @@ const StyledHero = styled.div`
     opacity: 1;
 
     .profile-img,
-    .about, .interests {
+    .about,
+    .interests {
       opacity: 1;
       transform: none;
     }
-    .name, .occupation, .website, .Info--content_btns {
+    .name,
+    .occupation,
+    .website,
+    .Info--content_btns {
       transform: none;
     }
   }
-`
+`;
 
 const InfoOne = styled.div`
   text-align: center;
   position: relative;
   padding-block: 5rem;
 
-  ::before { 
+  ::before {
     content: "";
     position: absolute;
     inset: 0;
     background-color: var(--sec-color);
     z-index: 10;
-    clip-path: polygon(0 0, 48% 45%, 100% 35%, 100% 70%, 48% 57%, 0 100%, 43% 100%, 0% 70%, 0% 35%, 43% 0);
+    clip-path: polygon(
+      0 0,
+      48% 45%,
+      100% 35%,
+      100% 70%,
+      48% 57%,
+      0 100%,
+      43% 100%,
+      0% 70%,
+      0% 35%,
+      43% 0
+    );
   }
 
   * {
@@ -173,7 +204,7 @@ const InfoOne = styled.div`
   .profile-img {
     width: 100%;
     padding-top: 1em;
-    
+
     img {
       width: 80%;
       max-width: 475px;
@@ -191,7 +222,7 @@ const InfoOne = styled.div`
     display: grid;
     align-content: center;
   }
-`
+`;
 
 const Details = styled.div`
   .name {
@@ -236,7 +267,7 @@ const Details = styled.div`
       color: white;
     }
   }
-`
+`;
 
 const InfoTwo = styled.div`
   display: flex;
@@ -248,8 +279,10 @@ const InfoTwo = styled.div`
     margin-inline: 45px;
   }
 
-  .about {}
-  .interests {}
+  .about {
+  }
+  .interests {
+  }
 
   .para {
     color: var(--paragraph-txt-color);
@@ -258,6 +291,6 @@ const InfoTwo = styled.div`
   @media (${devices.tablet}) {
     max-width: 400px;
   }
-`
+`;
 
-export default Hero
+export default Hero;

@@ -1,21 +1,21 @@
-import { useRef, useEffect } from 'react'
-import { useOutletContext } from 'react-router-dom'
+import { useRef, useEffect } from "react";
+import { useOutletContext } from "react-router-dom";
 
-export default function Canvas({dimension}) {
-  const canvasRef = useRef({})
-  const [isDarkMode] = useOutletContext()
-  const color = isDarkMode ? 'rgba(255, 255, 255, .5)' : 'rgba(245,98,93, .3)'
+export default function Canvas({ dimension }) {
+  const canvasRef = useRef({});
+  const [isDarkMode] = useOutletContext();
+  const color = isDarkMode ? "rgba(255, 255, 255, .5)" : "rgba(245,98,93, .3)";
 
   useEffect(() => {
-    const canvas = canvasRef.current
+    const canvas = canvasRef.current;
     const ctx = canvas.getContext("2d");
 
-    canvas.width = dimension.width
-    canvas.height = dimension.height
+    canvas.width = dimension.width;
+    canvas.height = dimension.height;
 
     const GRAVITY = 0;
     const WALL_LOSS = 1;
-    const BALL_COUNT = 20;  // approx as will not add ball if space can not be found
+    const BALL_COUNT = 20; // approx as will not add ball if space can not be found
     const MIN_BALL_SIZE = 13;
     const MAX_BALL_SIZE = 30;
     const VEL_MIN = 1;
@@ -23,39 +23,88 @@ export default function Canvas({dimension}) {
     const MAX_RESOLUTION_CYCLES = 100;
     Math.TAU = Math.PI * 2;
     Math.rand = (min, max) => Math.random() * (max - min) + min;
-    Math.randI = (min, max) => Math.random() * (max - min) + min | 0; // only for positive numbers 32bit signed int
-    Math.randItem = arr => arr[Math.random() * arr.length | 0]; // only for arrays with length < 2 ** 31 - 1
+    Math.randI = (min, max) => (Math.random() * (max - min) + min) | 0; // only for positive numbers 32bit signed int
+    Math.randItem = (arr) => arr[(Math.random() * arr.length) | 0]; // only for arrays with length < 2 ** 31 - 1
     // contact points of two circles radius r1, r2 moving along two lines (a,e)-(b,f) and (c,g)-(d,h) [where (,) is coord (x,y)]
-    Math.circlesInterceptUnitTime = (a, e, b, f, c, g, d, h, r1, r2) => { // args (x1, y1, x2, y2, x3, y3, x4, y4, r1, r2)
-      const A = a * a, B = b * b, C = c * c, D = d * d;
-      const E = e * e, F = f * f, G = g * g, H = h * h;
+    Math.circlesInterceptUnitTime = (a, e, b, f, c, g, d, h, r1, r2) => {
+      // args (x1, y1, x2, y2, x3, y3, x4, y4, r1, r2)
+      const A = a * a,
+        B = b * b,
+        C = c * c,
+        D = d * d;
+      const E = e * e,
+        F = f * f,
+        G = g * g,
+        H = h * h;
       var R = (r1 + r2) ** 2;
-      const AA = A + B + C + F + G + H + D + E + b * c + c * b + f * g + g * f + 2 * (a * d - a * b - a * c - b * d - c * d - e * f + e * h - e * g - f * h - g * h);
-      const BB = 2 * (-A + a * b + 2 * a * c - a * d - c * b - C + c * d - E + e * f + 2 * e * g - e * h - g * f - G + g * h);
+      const AA =
+        A +
+        B +
+        C +
+        F +
+        G +
+        H +
+        D +
+        E +
+        b * c +
+        c * b +
+        f * g +
+        g * f +
+        2 *
+          (a * d -
+            a * b -
+            a * c -
+            b * d -
+            c * d -
+            e * f +
+            e * h -
+            e * g -
+            f * h -
+            g * h);
+      const BB =
+        2 *
+        (-A +
+          a * b +
+          2 * a * c -
+          a * d -
+          c * b -
+          C +
+          c * d -
+          E +
+          e * f +
+          2 * e * g -
+          e * h -
+          g * f -
+          G +
+          g * h);
       const CC = A - 2 * a * c + C + E - 2 * e * g + G - R;
       return Math.quadRoots(AA, BB, CC);
-    }
-    Math.quadRoots = (a, b, c) => { // find roots for quadratic
-      if (Math.abs(a) < 1e-6) { return b !== 0 ? [-c / b] : [] }
+    };
+    Math.quadRoots = (a, b, c) => {
+      // find roots for quadratic
+      if (Math.abs(a) < 1e-6) {
+        return b !== 0 ? [-c / b] : [];
+      }
       b /= a;
       var d = b * b - 4 * (c / a);
       if (d > 0) {
         d = d ** 0.5;
-        return [0.5 * (-b + d), 0.5 * (-b - d)]
+        return [0.5 * (-b + d), 0.5 * (-b - d)];
       }
       return d === 0 ? [0.5 * -b] : [];
-    }
+    };
     Math.interceptLineBallTime = (x, y, vx, vy, x1, y1, x2, y2, r) => {
       const xx = x2 - x1;
       const yy = y2 - y1;
       const d = vx * yy - vy * xx;
-      if (d > 0) {  // only if moving towards the line
+      if (d > 0) {
+        // only if moving towards the line
         const dd = r / (xx * xx + yy * yy) ** 0.5;
         const nx = xx * dd;
         const ny = yy * dd;
         return (xx * (y - (y1 + nx)) - yy * (x - (x1 - ny))) / d;
       }
-    }
+    };
     const balls = [];
     const lines = [];
     function Line(x1, y1, x2, y2) {
@@ -77,12 +126,12 @@ export default function Canvas({dimension}) {
         this.x2 = x;
         this.y2 = y;
         return this;
-      }
-    }
+      },
+    };
 
-    function Ball(x, y, vx, vy, r = 45, m = 4 / 3 * Math.PI * (r ** 3)) {
+    function Ball(x, y, vx, vy, r = 45, m = (4 / 3) * Math.PI * r ** 3) {
       this.r = r;
-      this.m = m
+      this.m = m;
       this.x = x;
       this.y = y;
       this.vx = vx;
@@ -99,7 +148,17 @@ export default function Canvas({dimension}) {
         ctx.arc(this.x, this.y, this.r, 0, Math.TAU);
       },
       interceptLineTime(l, time) {
-        const u = Math.interceptLineBallTime(this.x, this.y, this.vx, this.vy, l.x1, l.y1, l.x2, l.y2, this.r);
+        const u = Math.interceptLineBallTime(
+          this.x,
+          this.y,
+          this.vx,
+          this.vy,
+          l.x1,
+          l.y1,
+          l.x2,
+          l.y2,
+          this.r
+        );
         if (u >= time && u <= 1) {
           return u;
         }
@@ -113,24 +172,39 @@ export default function Canvas({dimension}) {
         const d = (x * x + y * y) ** 0.5;
         if (d > this.r + b.r) {
           const times = Math.circlesInterceptUnitTime(
-            this.x, this.y,
-            this.x + this.vx, this.y + this.vy,
-            b.x, b.y,
-            b.x + b.vx, b.y + b.vy,
-            this.r, b.r
+            this.x,
+            this.y,
+            this.x + this.vx,
+            this.y + this.vy,
+            b.x,
+            b.y,
+            b.x + b.vx,
+            b.y + b.vy,
+            this.r,
+            b.r
           );
           if (times.length) {
             if (times.length === 1) {
-              if (this.checkBallBallTime(times[0], time)) { return times[0] }
+              if (this.checkBallBallTime(times[0], time)) {
+                return times[0];
+              }
               return;
             }
             if (times[0] <= times[1]) {
-              if (this.checkBallBallTime(times[0], time)) { return times[0] }
-              if (this.checkBallBallTime(times[1], time)) { return times[1] }
-              return
+              if (this.checkBallBallTime(times[0], time)) {
+                return times[0];
+              }
+              if (this.checkBallBallTime(times[1], time)) {
+                return times[1];
+              }
+              return;
             }
-            if (this.checkBallBallTime(times[1], time)) { return times[1] }
-            if (this.checkBallBallTime(times[0], time)) { return times[0] }
+            if (this.checkBallBallTime(times[1], time)) {
+              return times[1];
+            }
+            if (this.checkBallBallTime(times[0], time)) {
+              return times[0];
+            }
           }
         }
       },
@@ -152,16 +226,16 @@ export default function Canvas({dimension}) {
         const a = this;
         const m1 = a.m;
         const m2 = b.m;
-        const x = a.x - b.x
-        const y = a.y - b.y
-        const d = (x * x + y * y);
-        const u1 = (a.vx * x + a.vy * y) / d
-        const u2 = (x * a.vy - y * a.vx) / d
-        const u3 = (b.vx * x + b.vy * y) / d
-        const u4 = (x * b.vy - y * b.vx) / d
+        const x = a.x - b.x;
+        const y = a.y - b.y;
+        const d = x * x + y * y;
+        const u1 = (a.vx * x + a.vy * y) / d;
+        const u2 = (x * a.vy - y * a.vx) / d;
+        const u3 = (b.vx * x + b.vy * y) / d;
+        const u4 = (x * b.vy - y * b.vx) / d;
         const mm = m1 + m2;
-        const vu3 = (m1 - m2) / mm * u1 + (2 * m2) / mm * u3;
-        const vu1 = (m2 - m1) / mm * u3 + (2 * m1) / mm * u1;
+        const vu3 = ((m1 - m2) / mm) * u1 + ((2 * m2) / mm) * u3;
+        const vu1 = ((m2 - m1) / mm) * u3 + ((2 * m1) / mm) * u1;
         a.x = a.x + a.vx * time;
         a.y = a.y + a.vy * time;
         b.x = b.x + b.vx * time;
@@ -178,21 +252,32 @@ export default function Canvas({dimension}) {
       doesOverlap(ball) {
         const x = this.x - ball.x;
         const y = this.y - ball.y;
-        return (this.r + ball.r) > ((x * x + y * y) ** 0.5);
-      }
-    }
+        return this.r + ball.r > (x * x + y * y) ** 0.5;
+      },
+    };
 
     function canAdd(ball) {
       for (const b of balls) {
-        if (ball.doesOverlap(b)) { return false }
+        if (ball.doesOverlap(b)) {
+          return false;
+        }
       }
       return true;
     }
     function create(bCount) {
       lines.push(new Line(0, 0, ctx.canvas.width, 0));
-      lines.push((new Line(0, ctx.canvas.height, ctx.canvas.width , ctx.canvas.height)).reverse());
-      lines.push((new Line(0, 0, 0, ctx.canvas.height)).reverse());
-      lines.push(new Line(ctx.canvas.width, 0, ctx.canvas.width, ctx.canvas.height));
+      lines.push(
+        new Line(
+          0,
+          ctx.canvas.height,
+          ctx.canvas.width,
+          ctx.canvas.height
+        ).reverse()
+      );
+      lines.push(new Line(0, 0, 0, ctx.canvas.height).reverse());
+      lines.push(
+        new Line(ctx.canvas.width, 0, ctx.canvas.width, ctx.canvas.height)
+      );
 
       while (bCount--) {
         let tries = 100;
@@ -205,7 +290,7 @@ export default function Canvas({dimension}) {
             Math.rand(MAX_BALL_SIZE + 10, canvas.height - MAX_BALL_SIZE - 10),
             Math.cos(dir) * vel,
             Math.sin(dir) * vel,
-            Math.rand(MIN_BALL_SIZE, MAX_BALL_SIZE),
+            Math.rand(MIN_BALL_SIZE, MAX_BALL_SIZE)
           );
           if (canAdd(ball)) {
             balls.push(ball);
@@ -215,8 +300,16 @@ export default function Canvas({dimension}) {
       }
     }
     function resolveCollisions() {
-      var minTime = 0, minObj, minBall, resolving = true, idx = 0, idx1, after = 0, e = 0;
-      while (resolving && e++ < MAX_RESOLUTION_CYCLES) { // too main ball may create very lone resolution cycle. e limits this
+      var minTime = 0,
+        minObj,
+        minBall,
+        resolving = true,
+        idx = 0,
+        idx1,
+        after = 0,
+        e = 0;
+      while (resolving && e++ < MAX_RESOLUTION_CYCLES) {
+        // too main ball may create very lone resolution cycle. e limits this
         resolving = false;
         minObj = undefined;
         minBall = undefined;
@@ -262,20 +355,23 @@ export default function Canvas({dimension}) {
     create(BALL_COUNT);
     mainLoop();
 
-    
     function mainLoop() {
       ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
       resolveCollisions();
-      for (const b of balls) { b.update() }
-      
-      ctx.beginPath();
-      ctx.fillStyle = color
-      for (const b of balls) { b.draw() }
-      ctx.fill()
+      for (const b of balls) {
+        b.update();
+      }
 
       ctx.beginPath();
-      ctx.strokeStyle = color
-      ctx.lineWidth = 10
+      ctx.fillStyle = color;
+      for (const b of balls) {
+        b.draw();
+      }
+      ctx.fill();
+
+      ctx.beginPath();
+      ctx.strokeStyle = color;
+      ctx.lineWidth = 10;
       lines[1].draw();
       ctx.stroke();
 
@@ -283,24 +379,23 @@ export default function Canvas({dimension}) {
     }
 
     // function resizeCanvasToDisplaySize(canvas) {
-    
+
     //   const { width, height } = canvas.getBoundingClientRect()
     //   console.log("Supposed dim", width, height)
-  
+
     //   if (canvas.width !== width || canvas.height !== height) {
     //     canvas.width = width
     //     canvas.height = height
     //     return true // here you can return some usefull information like delta width and delta height instead of just true
     //     // this information can be used in the next redraw...
     //   }
-  
+
     //   return false
     // }
     // resizeCanvasToDisplaySize(canvas);
+  }, [dimension, color]);
 
-  }, [dimension, color])
-
-  return <canvas ref={canvasRef} />
+  return <canvas ref={canvasRef} />;
 }
 
 // This code was modified from Stack Overflow: https://stackoverflow.com/questions/60727534/balls-bouncing-off-of-each-other

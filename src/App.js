@@ -1,8 +1,8 @@
-import { Route, Routes, BrowserRouter } from "react-router-dom";
-import "./App.css";
-import Home from "./pages/Home";
-import WorkingOnIt from "./pages/WorkingOnIt";
-import SharedLayout from "./components/SharedLayout";
+import { Route, Routes, BrowserRouter } from 'react-router-dom';
+import './App.css';
+import Home from './pages/Home';
+import WorkingOnIt from './pages/WorkingOnIt';
+import SharedLayout from './components/SharedLayout';
 
 const App = () => {
   return (
@@ -19,4 +19,4 @@ const App = () => {
 
 export default App;
 
-console.log("Samuel Adepoju MADE THIS!!! 😁😁");
+console.log('Samuel Adepoju MADE THIS!!! 😁😁');

@@ -1,8 +1,8 @@
-import { useState, useRef, useEffect } from "react";
-import styled from "styled-components/macro";
-import { Link } from "react-router-dom";
-import Canvas from "components/Canvas";
-import emojiSrc from "assets/emoji-smile.gif";
+import { useState, useRef, useEffect } from 'react';
+import styled from 'styled-components/macro';
+import { Link } from 'react-router-dom';
+import Canvas from 'components/Canvas';
+import emojiSrc from 'assets/emoji-smile.gif';
 
 function getWindowSize() {
   const { innerWidth, innerHeight } = window;
@@ -22,9 +22,9 @@ const WorkingOnIt = () => {
         height: wElement.clientHeight,
       });
     };
-    window.addEventListener("resize", listener);
+    window.addEventListener('resize', listener);
 
-    return () => window.removeEventListener("resize", listener);
+    return () => window.removeEventListener('resize', listener);
   }, []);
 
   return (
@@ -32,7 +32,7 @@ const WorkingOnIt = () => {
       <Canvas dimension={dim} />
       <div>
         <h1>
-          Working On It <img className="emoji" src={emojiSrc} alt="emoji" />{" "}
+          Working On It <img className="emoji" src={emojiSrc} alt="emoji" />{' '}
         </h1>
         <button>
           <Link to="/">GO BACK</Link>

@@ -1,17 +1,17 @@
-import styled from "styled-components/macro";
-import { useOutletContext } from "react-router-dom";
+import styled from 'styled-components/macro';
+import { useOutletContext } from 'react-router-dom';
 
-import { devices } from "assets/data";
+import { devices } from 'assets/data';
 
 const RightBar = () => {
   const [isDarkMode] = useOutletContext();
 
   return (
     <Nav isDarkMode={isDarkMode}>
-      <NavItem className='nav-item'>Top</NavItem>
-      <NavItem className='nav-item'>About</NavItem>
-      <NavItem className='nav-item'>Projects</NavItem>
-      <NavItem className='nav-item'>Lorem</NavItem>
+      <NavItem className="nav-item">Top</NavItem>
+      <NavItem className="nav-item">About</NavItem>
+      <NavItem className="nav-item">Projects</NavItem>
+      <NavItem className="nav-item">Lorem</NavItem>
     </Nav>
   );
 };
@@ -28,7 +28,7 @@ const Nav = styled.nav`
   background: linear-gradient(55deg, var(--sec-color), 70% transparent);
 
   .nav-item {
-    background-color: ${p => p.isDarkMode ? 'var(--bg-color)' : 'white'};
+    background-color: ${(p) => (p.isDarkMode ? 'var(--bg-color)' : 'white')};
   }
 
   @media ${devices.tablet} {

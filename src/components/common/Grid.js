@@ -1,5 +1,5 @@
-import styled from "styled-components";
-import { devices } from "assets/data";
+import styled from 'styled-components';
+import { devices } from 'assets/data';
 
 const Grid = styled.div`
   display: grid;
@@ -12,7 +12,9 @@ const Grid = styled.div`
 export default function gridjsx({ children }) {
   return (
     <Grid>
-      <div style={{ justifyContent: "center", paddingInline: '2rem 1rem' }}>{children}</div>
+      <div style={{ justifyContent: 'center', paddingInline: '2rem 1rem' }}>
+        {children}
+      </div>
       <div></div>
     </Grid>
   );

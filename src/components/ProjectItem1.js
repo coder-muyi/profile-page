@@ -1,9 +1,9 @@
-import styled from "styled-components/macro";
-import { useRef, useEffect } from "react";
+import styled from 'styled-components/macro';
+import { useRef, useEffect } from 'react';
 
-import { ReactComponent as Arrow } from "../assets/icons/arrow-right.svg";
-import useScrollObserver from "../hooks/useScrollObserver";
-import { Link } from "react-router-dom";
+import { ReactComponent as Arrow } from '../assets/icons/arrow-right.svg';
+import useScrollObserver from '../hooks/useScrollObserver';
+import { Link } from 'react-router-dom';
 
 const ProjectItem = (props) => {
   const { id, name, imgSrc, url, checkHover, removeLiFocusClass } = props;
@@ -11,7 +11,7 @@ const ProjectItem = (props) => {
 
   const observer = useScrollObserver((entry) => {
     if (entry.isIntersecting) {
-      entry.target.classList.remove("hide-project-item");
+      entry.target.classList.remove('hide-project-item');
     }
   });
 

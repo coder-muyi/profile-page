@@ -1,6 +1,6 @@
 /* @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap'); */
 
-@import url("https://fonts.googleapis.com/css2?family=Harmattan:wght@400;700&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Harmattan:wght@400;700&display=swap');
 
 :root {
   --cmn-box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.2);
@@ -9,7 +9,7 @@
 
 body {
   /* font-family: Inter, sans-serif; */
-  font-family: "Harmattan", sans-serif;
+  font-family: 'Harmattan', sans-serif;
 }
 
 * {
@@ -55,7 +55,7 @@ h2 {
 }
 
 h2::before {
-  content: "";
+  content: '';
   width: 4px;
   height: 120%;
   position: absolute;

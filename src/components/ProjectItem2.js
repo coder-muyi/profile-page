@@ -31,7 +31,7 @@ const ProjectItem = (props) => {
 
 const Item = styled.div`
   width: 100%;
-  max-width: 50rem;
+  max-width: 45rem;
   height: 20rem;
   margin-bottom: 5rem;
   margin-inline: auto;

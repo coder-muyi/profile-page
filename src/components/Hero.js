@@ -1,11 +1,11 @@
-import { useRef, useEffect, useState } from "react";
-import styled from "styled-components/macro";
-import Canvas from "./Canvas";
-import ProfileImg from "assets/profile-img.webp";
-import { ReactComponent as MailIcon } from "assets/icons/mail.svg";
-import { ReactComponent as LinkedInIcon } from "assets/icons/linkedin.svg";
-import { devices } from "assets/data";
-import useScrollObserver from "hooks/useScrollObserver";
+import { useRef, useEffect, useState } from 'react';
+import styled from 'styled-components/macro';
+import Canvas from './Canvas';
+import ProfileImg from 'assets/profile-img.webp';
+import { ReactComponent as MailIcon } from 'assets/icons/mail.svg';
+import { ReactComponent as LinkedInIcon } from 'assets/icons/linkedin.svg';
+import { devices } from 'assets/data';
+import useScrollObserver from 'hooks/useScrollObserver';
 
 function getWindowSize() {
   const { innerWidth, innerHeight } = window;
@@ -17,7 +17,7 @@ const Hero = () => {
 
   const observer = useScrollObserver((entry) => {
     if (entry.isIntersecting) {
-      entry.target.classList.add("do-magic");
+      entry.target.classList.add('do-magic');
     }
   });
 
@@ -134,7 +134,7 @@ const InfoOne = styled.div`
   padding-block: 5rem;
 
   ::before {
-    content: "";
+    content: '';
     position: absolute;
     inset: 0;
     background-color: var(--sec-color);

@@ -1,4 +1,4 @@
-import styled from "styled-components/macro";
+import styled from 'styled-components/macro';
 
 const ThemeToggle = ({ changeTheme, isDarkMode }) => {
   return (
@@ -25,7 +25,7 @@ const StyledThemeToggle = styled.div`
   }
 
   &::after {
-    content: "Change Theme";
+    content: 'Change Theme';
     position: absolute;
     top: 20%;
     left: 120%;
@@ -36,12 +36,12 @@ const StyledThemeToggle = styled.div`
 `;
 
 const Toggle = styled.input.attrs({
-  type: "checkbox",
+  type: 'checkbox',
 })`
   appearance: none;
   position: relative;
   border-radius: inherit;
-  background-color: ${(props) => (props.checked ? "grey" : "white")};
+  background-color: ${(props) => (props.checked ? 'grey' : 'white')};
   width: 100%;
   height: 100%;
   padding: 1em;
@@ -49,7 +49,7 @@ const Toggle = styled.input.attrs({
   display: block;
 
   &::before {
-    content: "";
+    content: '';
     position: absolute;
     display: block;
     left: 0;

@@ -1,14 +1,14 @@
-import { useRef, useEffect } from "react";
-import { useOutletContext } from "react-router-dom";
+import { useRef, useEffect } from 'react';
+import { useOutletContext } from 'react-router-dom';
 
 export default function Canvas({ dimension }) {
   const canvasRef = useRef({});
   const [isDarkMode] = useOutletContext();
-  const color = isDarkMode ? "rgba(255, 255, 255, .5)" : "rgba(245,98,93, .3)";
+  const color = isDarkMode ? 'rgba(255, 255, 255, .5)' : 'rgba(245,98,93, .3)';
 
   useEffect(() => {
     const canvas = canvasRef.current;
-    const ctx = canvas.getContext("2d");
+    const ctx = canvas.getContext('2d');
 
     canvas.width = dimension.width;
     canvas.height = dimension.height;
@@ -157,7 +157,7 @@ export default function Canvas({ dimension }) {
           l.y1,
           l.x2,
           l.y2,
-          this.r
+          this.r,
         );
         if (u >= time && u <= 1) {
           return u;
@@ -181,7 +181,7 @@ export default function Canvas({ dimension }) {
             b.x + b.vx,
             b.y + b.vy,
             this.r,
-            b.r
+            b.r,
           );
           if (times.length) {
             if (times.length === 1) {
@@ -271,12 +271,12 @@ export default function Canvas({ dimension }) {
           0,
           ctx.canvas.height,
           ctx.canvas.width,
-          ctx.canvas.height
-        ).reverse()
+          ctx.canvas.height,
+        ).reverse(),
       );
       lines.push(new Line(0, 0, 0, ctx.canvas.height).reverse());
       lines.push(
-        new Line(ctx.canvas.width, 0, ctx.canvas.width, ctx.canvas.height)
+        new Line(ctx.canvas.width, 0, ctx.canvas.width, ctx.canvas.height),
       );
 
       while (bCount--) {
@@ -290,7 +290,7 @@ export default function Canvas({ dimension }) {
             Math.rand(MAX_BALL_SIZE + 10, canvas.height - MAX_BALL_SIZE - 10),
             Math.cos(dir) * vel,
             Math.sin(dir) * vel,
-            Math.rand(MIN_BALL_SIZE, MAX_BALL_SIZE)
+            Math.rand(MIN_BALL_SIZE, MAX_BALL_SIZE),
           );
           if (canAdd(ball)) {
             balls.push(ball);

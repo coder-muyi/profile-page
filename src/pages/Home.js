@@ -1,11 +1,11 @@
-import styled from "styled-components/macro";
+import styled from 'styled-components/macro';
 
-import Hero from "components/Hero";
-import Projects from "components/Projects";
-import HomeNav from "components/HomeNav";
-import Canvas from "components/Canvas";
+import Hero from 'components/Hero';
+import Projects from 'components/Projects';
+import HomeNav from 'components/HomeNav';
+import Canvas from 'components/Canvas';
 // import { devices } from "assets/data";
-import { useWindowSize } from "hooks/useWindowSize";
+import { useWindowSize } from 'hooks/useWindowSize';
 
 export default function Home() {
   const windowSize = useWindowSize();

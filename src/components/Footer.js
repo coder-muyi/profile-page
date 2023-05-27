@@ -1,9 +1,9 @@
-import styled from "styled-components";
-import { ReactComponent as TwitterIcon } from "../assets/icons/twitter.svg";
+import styled from 'styled-components';
+import { ReactComponent as TwitterIcon } from '../assets/icons/twitter.svg';
 // import { ReactComponent as FacebookIcon } from "../assets/icons/facebook.svg";
 // import { ReactComponent as InstagramIcon } from "../assets/icons/instagram.svg";
-import { ReactComponent as GitHubIcon } from "../assets/icons/github.svg";
-import { devices } from "../assets/data";
+import { ReactComponent as GitHubIcon } from '../assets/icons/github.svg';
+import { devices } from '../assets/data';
 
 const Footer = () => {
   return (

@@ -57,7 +57,7 @@ const Toggle = styled.input.attrs({
     height: 110%;
     width: 55%;
     border-radius: 100%;
-    transition-duration: 0.3s;
+    transition-duration: var(--trans-dur);
     z-index: 3;
     background: var(--sec-color);
   }

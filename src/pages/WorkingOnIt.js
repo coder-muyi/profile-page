@@ -1,8 +1,8 @@
 import { useState, useRef, useEffect } from "react";
 import styled from "styled-components/macro";
 import { Link } from "react-router-dom";
-import Canvas from "../components/Canvas";
-import emojiSrc from "../assets/emoji-smile.gif";
+import Canvas from "components/Canvas";
+import emojiSrc from "assets/emoji-smile.gif";
 
 function getWindowSize() {
   const { innerWidth, innerHeight } = window;

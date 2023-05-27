@@ -1,11 +1,11 @@
 import { useRef, useEffect, useState } from "react";
 import styled from "styled-components/macro";
 import Canvas from "./Canvas";
-import ProfileImg from "../assets/profile-img.webp";
-import { ReactComponent as MailIcon } from "../assets/icons/mail.svg";
-import { ReactComponent as LinkedInIcon } from "../assets/icons/linkedin.svg";
-import { devices } from "../assets/data";
-import useScrollObserver from "../assets/hooks/useScrollObserver";
+import ProfileImg from "assets/profile-img.webp";
+import { ReactComponent as MailIcon } from "assets/icons/mail.svg";
+import { ReactComponent as LinkedInIcon } from "assets/icons/linkedin.svg";
+import { devices } from "assets/data";
+import useScrollObserver from "hooks/useScrollObserver";
 
 function getWindowSize() {
   const { innerWidth, innerHeight } = window;
@@ -14,7 +14,6 @@ function getWindowSize() {
 
 const Hero = () => {
   const heroRef = useRef({});
-  const [heroDimension, setheroDimension] = useState(getWindowSize());
 
   const observer = useScrollObserver((entry) => {
     if (entry.isIntersecting) {
@@ -24,22 +23,11 @@ const Hero = () => {
 
   useEffect(() => {
     const heroElement = heroRef.current;
-
-    let listener = () => {
-      setheroDimension({
-        width: heroElement.clientWidth,
-        height: heroElement.clientHeight,
-      });
-    };
-    window.addEventListener("resize", listener);
-
     observer.observe(heroElement);
-    return () => window.removeEventListener("resize", listener);
   }, [observer]);
 
   return (
     <StyledHero ref={heroRef}>
-      <Canvas dimension={heroDimension} />
       <InfoOne>
         <div className="profile-img">
           <img src={ProfileImg} alt="profile" />
@@ -66,7 +54,7 @@ const Hero = () => {
         </Details>
       </InfoOne>
 
-      <InfoTwo>
+      {/* <InfoTwo>
         <div className="about">
           <h2>About</h2>
           <p className="para">
@@ -81,7 +69,7 @@ const Hero = () => {
             Movies. Internet. JavaScript. Music. Team work. Coding
           </p>
         </div>
-      </InfoTwo>
+      </InfoTwo> */}
     </StyledHero>
   );
 };
@@ -91,7 +79,6 @@ const StyledHero = styled.div`
   position: relative;
   grid-column: 1 / -1;
   overflow: hidden;
-  transition: all 1s ease-in;
   opacity: 0;
 
   & > * {
@@ -106,45 +93,15 @@ const StyledHero = styled.div`
     z-index: 1;
   }
 
-  @media (${devices.tablet}) {
+  @media ${devices.tablet} {
     display: grid;
     grid-template-columns: 1fr 1fr;
   }
-  @media (${devices.laptop}) {
+  @media ${devices.laptop} {
     gap: 3rem;
   }
 
   --tmf: cubic-bezier(0.68, -0.55, 0.27, 1.55);
-
-  .profile-img,
-  .about,
-  .interests {
-    transition: 1s var(--tmf);
-    opacity: 0;
-    transform: translateX(-100%);
-  }
-  .about,
-  .interests {
-    transition: 1.5s var(--tmf);
-    transform: translateX(100%);
-  }
-
-  .interests {
-    transition: 1.5s var(--tmf) 200ms;
-  }
-
-  .name {
-    transition: 0.5s var(--tmf) 500ms;
-  }
-  .occupation {
-    transition: 0.5s var(--tmf) 600ms;
-  }
-  .website {
-    transition: 0.5s var(--tmf) 700ms;
-  }
-  .Info--content_btns {
-    transition: 0.5s var(--tmf) 800ms;
-  }
 
   .name,
   .occupation,
@@ -202,8 +159,9 @@ const InfoOne = styled.div`
   }
 
   .profile-img {
-    width: 100%;
+    max-width: 25rem;
     padding-top: 1em;
+    margin-inline: auto;
 
     img {
       width: 80%;
@@ -213,14 +171,6 @@ const InfoOne = styled.div`
       object-fit: cover;
       border-bottom: 1em solid var(--bg-color);
     }
-  }
-
-  @media (${devices.tablet}) {
-    grid-column: 1 / 2;
-  }
-  @media (${devices.laptopL}) {
-    display: grid;
-    align-content: center;
   }
 `;
 
@@ -288,7 +238,7 @@ const InfoTwo = styled.div`
     color: var(--paragraph-txt-color);
   }
 
-  @media (${devices.tablet}) {
+  @media ${devices.tablet} {
     max-width: 400px;
   }
 `;

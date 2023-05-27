@@ -1,0 +1,10 @@
+{
+  "compilerOptions": {
+    "baseUrl": "src",
+    "paths": {
+      "@common/*": ["src/components/common/*"]
+    }
+  },
+  "include": ["src", "src/**/*.js"],
+  "exclude": ["node_modules", "**/node_modules", "dist"]
+}

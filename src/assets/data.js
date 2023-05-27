@@ -1,23 +1,23 @@
 const rootUrl = `${process.env.PUBLIC_URL}/project_imgs`;
 
-const sizes = {
-  mobileS: "320px",
-  mobileM: "375px",
-  mobileL: "425px",
-  tablet: "768px",
-  laptop: "1024px",
-  laptopL: "1440px",
-  desktop: "2560px",
+export const sizes = {
+  mobileS: 320,
+  mobileM: 375,
+  mobileL: 425,
+  tablet: 768,
+  laptop: 1024,
+  laptopL: 1440,
+  desktop: 2560,
 };
 
 export const devices = {
-  mobileS: `(min-width: ${sizes.mobileS})`,
-  mobileM: `(min-width: ${sizes.mobileM})`,
-  mobileL: `(min-width: ${sizes.mobileL})`,
-  tablet: `(min-width: ${sizes.tablet})`,
-  laptop: `(min-width: ${sizes.laptop})`,
-  laptopL: `(min-width: ${sizes.laptopL})`,
-  desktop: `(min-width: ${sizes.desktop})`,
+  mobileS: `(min-width: ${sizes.mobileS}px)`,
+  mobileM: `(min-width: ${sizes.mobileM}px)`,
+  mobileL: `(min-width: ${sizes.mobileL}px)`,
+  tablet: `(min-width: ${sizes.tablet}px)`,
+  laptop: `(min-width: ${sizes.laptop}px)`,
+  laptopL: `(min-width: ${sizes.laptopL}px)`,
+  desktop: `(min-width: ${sizes.desktop}px)`,
 };
 
 export const projectsList = [
@@ -67,10 +67,5 @@ export const projectsList = [
     imgSrc: `${rootUrl}/coming-soon.png`,
     url: ""
   },
-  { 
-    name: "Moviemanic 2.0",
-    imgSrc: `${rootUrl}/coming-soon.png`,
-    url: ""
-  }
   */
 ];

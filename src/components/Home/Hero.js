@@ -1,16 +1,11 @@
-import { useRef, useEffect, useState } from 'react';
+import { useRef, useEffect } from 'react';
 import styled from 'styled-components/macro';
-import Canvas from './Canvas';
+
 import ProfileImg from 'assets/profile-img.webp';
 import { ReactComponent as MailIcon } from 'assets/icons/mail.svg';
 import { ReactComponent as LinkedInIcon } from 'assets/icons/linkedin.svg';
 import { devices } from 'assets/data';
 import useScrollObserver from 'hooks/useScrollObserver';
-
-function getWindowSize() {
-  const { innerWidth, innerHeight } = window;
-  return { width: innerWidth, height: innerHeight };
-}
 
 const Hero = () => {
   const heroRef = useRef({});
@@ -18,6 +13,8 @@ const Hero = () => {
   const observer = useScrollObserver((entry) => {
     if (entry.isIntersecting) {
       entry.target.classList.add('do-magic');
+    } else {
+      entry.target.classList.remove('do-magic');
     }
   });
 
@@ -28,48 +25,30 @@ const Hero = () => {
 
   return (
     <StyledHero ref={heroRef}>
-      <InfoOne>
+      <Info>
         <div className="profile-img">
           <img src={ProfileImg} alt="profile" />
         </div>
         <Details>
           <h1 className="name">
-            <span className="small">Hi, I am</span>Samuel Adepoju
+            <span className="small">Hi, I am</span>Oluwamuyiwa
           </h1>
           <p className="occupation">Frontend Developer</p>
           <div className="Info--content_btns">
-            <button className="email-btn" tabIndex={-1}>
-              <a href="mailto:oluwamuyiwaadepoju@gmail.com">
-                <MailIcon />
-                <span>Email</span>
-              </a>
-            </button>
-            <button className="linkedin-btn" tabIndex={-1}>
-              <a href="https://www.linkedin.com/in/oluwamuyiwa-adepoju-2b0948237/">
-                <LinkedInIcon />
-                <span>LinkedIn</span>
-              </a>
-            </button>
+            <a className="button email-btn" href="mailto:codermuyi@duck.com">
+              <MailIcon />
+              <span>Email</span>
+            </a>
+            <a
+              className="button linkedin-btn"
+              href="https://www.linkedin.com/in/codermuyi/"
+            >
+              <LinkedInIcon />
+              <span>LinkedIn</span>
+            </a>
           </div>
         </Details>
-      </InfoOne>
-
-      {/* <InfoTwo>
-        <div className="about">
-          <h2>About</h2>
-          <p className="para">
-            I am a frontend developer with a particular interest in frontend
-            frameworks. I try to keep up with new web development strategies and
-            best practices, applying them in code as I learn.
-          </p>
-        </div>
-        <div className="interests">
-          <h2>Interests</h2>
-          <p className="para">
-            Movies. Internet. JavaScript. Music. Team work. Coding
-          </p>
-        </div>
-      </InfoTwo> */}
+      </Info>
     </StyledHero>
   );
 };
@@ -77,41 +56,34 @@ const Hero = () => {
 const StyledHero = styled.div`
   min-height: 100vh;
   position: relative;
-  grid-column: 1 / -1;
   overflow: hidden;
   opacity: 0;
+  display: grid;
+  place-items: center;
 
-  & > * {
-    z-index: 15;
-    position: relative;
-  }
-
-  canvas {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    z-index: 1;
-  }
-
-  @media ${devices.tablet} {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-  }
-  @media ${devices.laptop} {
-    gap: 3rem;
-  }
-
-  --tmf: cubic-bezier(0.68, -0.55, 0.27, 1.55);
+  --ttf: cubic-bezier(0.68, -0.55, 0.27, 1.55);
 
   .name,
   .occupation,
-  .website,
   .Info--content_btns {
     transform: translateX(-100%);
+    opacity: 0;
+    transition-timing-function: var(-ttf);
   }
 
   &.do-magic {
     opacity: 1;
+
+    .name {
+      transition-delay: 0.2s;
+    }
+    .occupation {
+      transition-delay: 0.3s;
+    }
+
+    .Info--content_btns {
+      transition-delay: 0.4s;
+    }
 
     .profile-img,
     .about,
@@ -121,24 +93,23 @@ const StyledHero = styled.div`
     }
     .name,
     .occupation,
-    .website,
     .Info--content_btns {
       transform: none;
+      opacity: 1;
     }
   }
 `;
 
-const InfoOne = styled.div`
+const Info = styled.div`
   text-align: center;
-  position: relative;
-  padding-block: 5rem;
+  isolation: isolate;
 
   ::before {
     content: '';
     position: absolute;
     inset: 0;
-    background-color: var(--sec-color);
-    z-index: 10;
+    background-color: var(--theme-color);
+    z-index: -1;
     clip-path: polygon(
       0 0,
       48% 45%,
@@ -153,23 +124,21 @@ const InfoOne = styled.div`
     );
   }
 
-  * {
-    z-index: 15;
-    position: relative;
-  }
-
   .profile-img {
-    max-width: 25rem;
+    max-width: 15rem;
     padding-top: 1em;
     margin-inline: auto;
 
     img {
       width: 80%;
-      max-width: 475px;
       margin-inline: auto;
       border-radius: 50%;
       object-fit: cover;
       border-bottom: 1em solid var(--bg-color);
+    }
+
+    @media ${devices.tablet} {
+      max-width: 20rem;
     }
   }
 `;
@@ -177,7 +146,7 @@ const InfoOne = styled.div`
 const Details = styled.div`
   .name {
     margin-bottom: 0;
-    font-size: 3rem;
+    font-size: clamp(3rem, 3vw, 5rem);
     line-height: 1;
 
     .small {
@@ -189,13 +158,8 @@ const Details = styled.div`
   .occupation {
     margin: 0;
     font-weight: 400;
-    color: var(--occupation-txt-color);
+    color: var(--t-color);
     margin-bottom: 1rem;
-  }
-
-  .website {
-    font-size: 12px;
-    color: var(--web-txt-color);
   }
 
   .Info--content_btns {
@@ -203,43 +167,20 @@ const Details = styled.div`
     justify-content: center;
     gap: 20px;
 
-    button svg {
+    .button svg {
       width: 1.2rem;
       height: 1.2rem;
     }
 
     .email-btn {
       background-color: white;
+      color: var(--sec-color);
     }
 
     .linkedin-btn {
       background-color: var(--sec-color);
       color: white;
     }
-  }
-`;
-
-const InfoTwo = styled.div`
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  padding-block: 4rem;
-
-  & > * {
-    margin-inline: 45px;
-  }
-
-  .about {
-  }
-  .interests {
-  }
-
-  .para {
-    color: var(--paragraph-txt-color);
-  }
-
-  @media ${devices.tablet} {
-    max-width: 400px;
   }
 `;
 

@@ -1,10 +1,8 @@
 import { useRef, useEffect } from 'react';
-import { useOutletContext } from 'react-router-dom';
 
 export default function Canvas({ dimension }) {
   const canvasRef = useRef({});
-  const [isDarkMode] = useOutletContext();
-  const color = isDarkMode ? 'rgba(255, 255, 255, .5)' : 'rgba(245,98,93, .3)';
+  const color = 'rgba(245,98,93, .2)';
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -16,10 +14,10 @@ export default function Canvas({ dimension }) {
     const GRAVITY = 0;
     const WALL_LOSS = 1;
     const BALL_COUNT = 20; // approx as will not add ball if space can not be found
-    const MIN_BALL_SIZE = 13;
-    const MAX_BALL_SIZE = 30;
-    const VEL_MIN = 1;
-    const VEL_MAX = 3;
+    const MIN_BALL_SIZE = 10;
+    const MAX_BALL_SIZE = 70;
+    const VEL_MIN = 0;
+    const VEL_MAX = 0.5;
     const MAX_RESOLUTION_CYCLES = 100;
     Math.TAU = Math.PI * 2;
     Math.rand = (min, max) => Math.random() * (max - min) + min;
@@ -105,19 +103,21 @@ export default function Canvas({ dimension }) {
         return (xx * (y - (y1 + nx)) - yy * (x - (x1 - ny))) / d;
       }
     };
+
     const balls = [];
     const lines = [];
-    function Line(x1, y1, x2, y2) {
-      this.x1 = x1;
-      this.y1 = y1;
-      this.x2 = x2;
-      this.y2 = y2;
-    }
-    Line.prototype = {
+
+    class Line {
+      constructor(x1, y1, x2, y2) {
+        this.x1 = x1;
+        this.y1 = y1;
+        this.x2 = x2;
+        this.y2 = y2;
+      }
       draw() {
         ctx.moveTo(this.x1, this.y1);
         ctx.lineTo(this.x2, this.y2);
-      },
+      }
       reverse() {
         const x = this.x1;
         const y = this.y1;
@@ -126,27 +126,27 @@ export default function Canvas({ dimension }) {
         this.x2 = x;
         this.y2 = y;
         return this;
-      },
-    };
-
-    function Ball(x, y, vx, vy, r = 45, m = (4 / 3) * Math.PI * r ** 3) {
-      this.r = r;
-      this.m = m;
-      this.x = x;
-      this.y = y;
-      this.vx = vx;
-      this.vy = vy;
+      }
     }
-    Ball.prototype = {
+
+    class Ball {
+      constructor(x, y, vx, vy, r = 45, m = (4 / 3) * Math.PI * r ** 3) {
+        this.r = r;
+        this.m = m;
+        this.x = x;
+        this.y = y;
+        this.vx = vx;
+        this.vy = vy;
+      }
       update() {
         this.x += this.vx;
         this.y += this.vy;
         this.vy += GRAVITY;
-      },
+      }
       draw() {
         ctx.moveTo(this.x + this.r, this.y);
         ctx.arc(this.x, this.y, this.r, 0, Math.TAU);
-      },
+      }
       interceptLineTime(l, time) {
         const u = Math.interceptLineBallTime(
           this.x,
@@ -162,10 +162,10 @@ export default function Canvas({ dimension }) {
         if (u >= time && u <= 1) {
           return u;
         }
-      },
+      }
       checkBallBallTime(t, minTime) {
         return t > minTime && t <= 1;
-      },
+      }
       interceptBallTime(b, time) {
         const x = this.x - b.x;
         const y = this.y - b.y;
@@ -207,7 +207,7 @@ export default function Canvas({ dimension }) {
             }
           }
         }
-      },
+      }
       collideLine(l, time) {
         const x1 = l.x2 - l.x1;
         const y1 = l.y2 - l.y1;
@@ -221,7 +221,7 @@ export default function Canvas({ dimension }) {
         this.vy = (ny * u - this.vy) * WALL_LOSS;
         this.x -= this.vx * time;
         this.y -= this.vy * time;
-      },
+      }
       collide(b, time) {
         const a = this;
         const m1 = a.m;
@@ -248,13 +248,13 @@ export default function Canvas({ dimension }) {
         a.y = a.y - a.vy * time;
         b.x = b.x - b.vx * time;
         b.y = b.y - b.vy * time;
-      },
+      }
       doesOverlap(ball) {
         const x = this.x - ball.x;
         const y = this.y - ball.y;
         return this.r + ball.r > (x * x + y * y) ** 0.5;
-      },
-    };
+      }
+    }
 
     function canAdd(ball) {
       for (const b of balls) {
@@ -308,6 +308,7 @@ export default function Canvas({ dimension }) {
         idx1,
         after = 0,
         e = 0;
+
       while (resolving && e++ < MAX_RESOLUTION_CYCLES) {
         // too main ball may create very lone resolution cycle. e limits this
         resolving = false;
@@ -377,22 +378,6 @@ export default function Canvas({ dimension }) {
 
       requestAnimationFrame(mainLoop);
     }
-
-    // function resizeCanvasToDisplaySize(canvas) {
-
-    //   const { width, height } = canvas.getBoundingClientRect()
-    //   console.log("Supposed dim", width, height)
-
-    //   if (canvas.width !== width || canvas.height !== height) {
-    //     canvas.width = width
-    //     canvas.height = height
-    //     return true // here you can return some usefull information like delta width and delta height instead of just true
-    //     // this information can be used in the next redraw...
-    //   }
-
-    //   return false
-    // }
-    // resizeCanvasToDisplaySize(canvas);
   }, [dimension, color]);
 
   return <canvas ref={canvasRef} />;

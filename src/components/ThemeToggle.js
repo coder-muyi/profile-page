@@ -59,7 +59,7 @@ const Toggle = styled.input.attrs({
     border-radius: 100%;
     transition-duration: var(--trans-dur);
     z-index: 3;
-    background: var(--sec-color);
+    background: var(--theme-color);
   }
 
   &:checked::before {

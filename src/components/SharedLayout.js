@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { Outlet } from 'react-router-dom';
 import ForceScrollToTop from './ForceScrollToTop';
 import ThemeToggle from './ThemeToggle';
-import Footer from './Footer';
+// import Footer from './Footer';
 
 const SharedLayout = () => {
   const [isDarkMode, setDarkMode] = useState(false);
@@ -22,7 +22,7 @@ const SharedLayout = () => {
       <ThemeToggle changeTheme={changeTheme} isDarkMode={isDarkMode} />
       <ForceScrollToTop />
       <Outlet context={[isDarkMode, changeTheme]} />
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 };

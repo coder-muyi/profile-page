@@ -1,6 +1,6 @@
 import { Route, Routes, BrowserRouter } from 'react-router-dom';
 import './App.css';
-import Home from 'pages/home';
+import Home from 'pages/homepage';
 import Project from 'pages/project';
 import SharedLayout from 'components/SharedLayout';
 import GlobalStyles from 'components/GlobalStyles';

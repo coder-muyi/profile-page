@@ -31,18 +31,20 @@ const contacts = [
   },
 ];
 
-const Footer = () => {
+const Footer = ({ displaySocial }) => {
   return (
     <SFooter>
-      <div>
-        {contacts.map((contact, i) => (
-          <div key={i}>
-            <a href={contact.link} target="_blank" rel="noreferrer">
-              {contact.icon}
-            </a>
-          </div>
-        ))}
-      </div>
+      {displaySocial && (
+        <div>
+          {contacts.map((contact, i) => (
+            <div key={i}>
+              <a href={contact.link} target="_blank" rel="noreferrer">
+                {contact.icon}
+              </a>
+            </div>
+          ))}
+        </div>
+      )}
       <p>@ 2023</p>
     </SFooter>
   );
@@ -52,6 +54,7 @@ const SFooter = styled.div`
   background-color: var(--sec-color);
   text-align: center;
   padding-block: 3rem;
+  color: white;
 
   div {
     display: flex;

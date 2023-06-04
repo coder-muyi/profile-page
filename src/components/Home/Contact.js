@@ -11,7 +11,6 @@ import {
 import { ReactComponent as FrontendMentorIcon } from 'assets/icons/frontend-mentor.svg';
 
 const iconSize = '3em';
-
 const contacts = [
   {
     icon: <IoMail size={iconSize} />,

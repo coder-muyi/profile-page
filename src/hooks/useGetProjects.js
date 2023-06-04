@@ -3,29 +3,29 @@ import { gql } from 'graphql-request';
 
 import { fetcher } from 'utils';
 
-export function useGetProjects() {
+export function useGetProjects(query) {
   const { data, error, isLoading } = useSwr(
     [
-      gql`
-        {
-          projects(orderBy: createdAt_DESC) {
-            id
-            name
-            url
-            images {
-              id
-              url(
-                transformation: {
-                  image: { resize: { width: 600, height: 600, fit: clip } }
-                }
-              )
-            }
-            projectDetail {
-              id
+      query ||
+        gql`
+          {
+            projects(orderBy: createdAt_DESC) {
+              name
+              url
+              images {
+                id
+                url(
+                  transformation: {
+                    image: { resize: { width: 600, height: 600, fit: clip } }
+                  }
+                )
+              }
+              projectDetail {
+                id
+              }
             }
           }
-        }
-      `,
+        `,
     ],
     fetcher,
   );

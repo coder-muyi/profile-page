@@ -45,6 +45,7 @@ const RightBar = () => {
           transform: 'scale(1.1) translateX(-2rem)',
           backgroundColor: 'var(--sec-color)',
           color: isDarkMode ? 'var(--theme-color)' : 'white',
+          boxShadow: '0 2px 3px rgb(255 255 255 / .2)',
         }
       : {
           color: 'var(--theme-color)',

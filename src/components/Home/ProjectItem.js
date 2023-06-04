@@ -13,6 +13,8 @@ const ProjectItem = (props) => {
   const observer = useScrollObserver((entry) => {
     if (entry.isIntersecting) {
       entry.target.classList.remove('hide-project-item');
+    } else {
+      entry.target.classList.add('hide-project-item');
     }
   });
 
@@ -77,6 +79,11 @@ const Item = styled.div`
       right: 10px;
       transform: scale(1.05);
     }
+  }
+
+  &.hide-project-item {
+    opacity: 0;
+    transform: translateX(-100%);
   }
 
   @media ${devices.tablet} {

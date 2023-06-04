@@ -81,7 +81,7 @@ const ProjectPage = () => {
           </CardContainer>
         </StyledDiv>
       </ScrollSection>
-      <Footer />
+      <Footer displaySocial />
     </>
   );
 };

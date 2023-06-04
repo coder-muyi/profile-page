@@ -2,18 +2,30 @@ import { useState, useEffect } from 'react';
 import { Outlet } from 'react-router-dom';
 import ForceScrollToTop from './ForceScrollToTop';
 import ThemeToggle from './ThemeToggle';
-// import Footer from './Footer';
+
+const getFromLocalStorage = (key) => {
+  const itemInStorage = localStorage.getItem(key);
+  return itemInStorage ?? null;
+};
 
 const SharedLayout = () => {
-  const [isDarkMode, setDarkMode] = useState(false);
-  const changeTheme = (event) => setDarkMode(event.target.checked);
+  const isDark = JSON.parse(getFromLocalStorage('isDarkMode'));
+  const [isDarkMode, setDarkMode] = useState(isDark);
+
+  const changeTheme = (event) => {
+    const { checked } = event.target;
+    setDarkMode(checked);
+    localStorage.setItem('isDarkMode', checked);
+  };
 
   useEffect(() => {
-    if (
-      window.matchMedia &&
-      window.matchMedia('(prefers-color-scheme: dark)').matches
-    ) {
-      setDarkMode(true);
+    if (!getFromLocalStorage('isDarkMode')) {
+      if (
+        window.matchMedia &&
+        window.matchMedia('(prefers-color-scheme: dark)').matches
+      ) {
+        setDarkMode(true);
+      }
     }
   }, []);
 
@@ -22,7 +34,6 @@ const SharedLayout = () => {
       <ThemeToggle changeTheme={changeTheme} isDarkMode={isDarkMode} />
       <ForceScrollToTop />
       <Outlet context={[isDarkMode, changeTheme]} />
-      {/* <Footer /> */}
     </div>
   );
 };

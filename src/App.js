@@ -1,7 +1,7 @@
 import { Route, Routes, BrowserRouter } from 'react-router-dom';
 import './App.css';
-import Home from './pages/Home';
-import WorkingOnIt from './pages/WorkingOnIt';
+import Home from './pages/home';
+import Project from './pages/project';
 import SharedLayout from './components/SharedLayout';
 import GlobalStyles from 'components/GlobalStyles';
 
@@ -12,7 +12,7 @@ const App = () => {
       <Routes>
         <Route path="/" element={<SharedLayout />}>
           <Route index element={<Home />} />
-          <Route path="/projects/:projectId" element={<WorkingOnIt />} />
+          <Route path="/project/:projectId" element={<Project />} />
         </Route>
       </Routes>
     </BrowserRouter>

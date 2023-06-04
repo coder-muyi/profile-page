@@ -11,18 +11,6 @@ body {
   font-family: 'Harmattan', sans-serif;
 }
 
-* {
-  transition-duration: 0.25s;
-}
-
-*:focus {
-  outline-color: var(--btw);
-}
-
-::selection {
-  background-color: rgb(245, 98, 93, 0.4);
-}
-
 .App {
   --theme-color: rgb(245, 98, 93);
   --bg-color: #f5f5f5;
@@ -34,7 +22,8 @@ body {
   --footer-bg-color: #d5d4d8;
   --wtb: white;
   --btw: black;
-  --t-color: green;
+  
+  --t-color: orange;
 
   background-color: var(--bg-color);
   min-height: 100vh;
@@ -50,7 +39,6 @@ body {
   --footer-bg-color: #161619;
   --wtb: black;
   --btw: white;
-  --t-color: lightgreen;
 
   color: white;
 }

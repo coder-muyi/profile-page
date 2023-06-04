@@ -2,11 +2,11 @@ import styled from 'styled-components/macro';
 
 import Hero from 'components/Home/Hero';
 import Projects from 'components/Home/Projects';
-import HomeNav from 'components/common/GridNav';
-import Canvas from 'components/Canvas';
+import GridNav from 'components/common/GridNav';
+import Canvas from 'components/common/Canvas';
 import Contact from 'components/Home/Contact';
 import About from 'components/Home/About';
-import ScrollSection from 'components/ScrollSection';
+import ScrollSection from 'components/common/ScrollSection';
 import { useWindowSize } from 'hooks/useWindowSize';
 
 export default function Home() {
@@ -14,7 +14,7 @@ export default function Home() {
 
   return (
     <>
-      <HomeNav />
+      <GridNav />
       <Fixed>
         <Canvas dimension={windowSize} />
       </Fixed>

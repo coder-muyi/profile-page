@@ -5,7 +5,7 @@ import ProfileImg from 'assets/profile-img.webp';
 import { ReactComponent as MailIcon } from 'assets/icons/mail.svg';
 import { ReactComponent as LinkedInIcon } from 'assets/icons/linkedin.svg';
 import { devices } from 'assets/data';
-import useScrollObserver from 'hooks/useScrollObserver';
+import { useScrollObserver } from 'hooks/useScrollObserver';
 
 const Hero = () => {
   const heroRef = useRef({});
@@ -31,7 +31,7 @@ const Hero = () => {
         </div>
         <Details>
           <h1 className="name">
-            <span className="small">Hi, I am</span>Oluwamuyiwa
+            <span className="small">Hi, I am</span>Samuel Adepoju
           </h1>
           <p className="occupation">Frontend Developer</p>
           <div className="Info--content_btns">

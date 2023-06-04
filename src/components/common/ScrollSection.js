@@ -1,11 +1,16 @@
 import styled from 'styled-components';
-import Grid from './common/Grid';
+import Grid from './Grid';
 import { Element } from 'react-scroll';
 
-const ScrollSection = ({ name, content, includePadding }) => {
+const ScrollSection = ({ name, content, includePadding, children, style }) => {
   return (
-    <Section id={name} name={name} includepadding={includePadding}>
-      <Grid paddingLeft={includePadding}>{content}</Grid>
+    <Section
+      id={name}
+      name={name}
+      includepadding={includePadding}
+      style={style}
+    >
+      {children || <Grid paddingLeft={includePadding}>{content}</Grid>}
     </Section>
   );
 };
@@ -15,7 +20,6 @@ const Section = styled(Element).attrs((p) => ({
 }))`
   min-height: 100vh;
   padding-block: ${(props) => (props.includepadding ? '2em 4em' : '0')};
-  box-sizing: margin-box;
   max-width: 2000px;
   margin: 0 auto;
 

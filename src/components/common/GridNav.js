@@ -1,5 +1,5 @@
 import styled from 'styled-components/macro';
-import Scroll, { scroller } from 'react-scroll';
+import { Link as ScrollLink } from 'react-scroll';
 import { useOutletContext } from 'react-router-dom';
 import {
   IoArrowUpCircleOutline,
@@ -11,9 +11,7 @@ import {
 import { useWindowSize } from 'hooks/useWindowSize';
 import { devices, sizes } from 'assets/data';
 
-const ScrollLink = Scroll.Link;
 const iconSize = '3rem';
-
 const navContent = [
   {
     icon: <IoArrowUpCircleOutline size={iconSize} />,
@@ -37,22 +35,20 @@ const navContent = [
   },
 ];
 
-console.log(scroller.getActiveLink());
-
 const RightBar = () => {
   const [isDarkMode] = useOutletContext();
   const { width } = useWindowSize();
-  const isTablet = width >= sizes.tablet;
 
-  const activeStyle = isTablet
-    ? {
-        transform: 'scale(1.1) translateX(-2rem)',
-        backgroundColor: 'var(--sec-color)',
-        color: isDarkMode ? 'var(--theme-color)' : 'white',
-      }
-    : {
-        color: 'var(--theme-color)',
-      };
+  const activeStyle =
+    width >= sizes.tablet
+      ? {
+          transform: 'scale(1.1) translateX(-2rem)',
+          backgroundColor: 'var(--sec-color)',
+          color: isDarkMode ? 'var(--theme-color)' : 'white',
+        }
+      : {
+          color: 'var(--theme-color)',
+        };
 
   return (
     <Nav isDarkMode={isDarkMode}>
@@ -63,7 +59,7 @@ const RightBar = () => {
           spy={true}
           smooth={true}
           duration={300}
-          offset={isTablet ? -150 : -300}
+          offset={width >= sizes.mobileL ? -150 : -300}
           className="nav-item-link"
           activeStyle={activeStyle}
         >

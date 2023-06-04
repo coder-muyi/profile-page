@@ -1,45 +1,67 @@
 import styled from 'styled-components';
-import { ReactComponent as TwitterIcon } from '../assets/icons/twitter.svg';
-// import { ReactComponent as FacebookIcon } from "../assets/icons/facebook.svg";
-// import { ReactComponent as InstagramIcon } from "../assets/icons/instagram.svg";
-import { ReactComponent as GitHubIcon } from '../assets/icons/github.svg';
-import { devices } from '../assets/data';
+
+import {
+  IoLogoTwitter,
+  IoLogoGithub,
+  IoMail,
+  IoLogoLinkedin,
+} from 'react-icons/io5';
+
+const iconSize = '3em';
+const contacts = [
+  {
+    icon: <IoMail size={iconSize} />,
+    text: 'Email',
+    link: 'mailto:codermuyi@duck.com',
+  },
+  {
+    icon: <IoLogoLinkedin size={iconSize} />,
+    text: 'LinkedIn',
+    link: 'https://www.linkedin.com/in/codermuyi/',
+  },
+  {
+    icon: <IoLogoGithub size={iconSize} />,
+    text: 'GitHub',
+    link: 'https://github.com/codermuyi',
+  },
+  {
+    icon: <IoLogoTwitter size={iconSize} />,
+    text: 'Twitter',
+    link: 'https://twitter.com/codermuyi',
+  },
+];
 
 const Footer = () => {
   return (
     <SFooter>
-      <div className="Footer--icons">
-        <TwitterIcon />
-        {/* <FacebookIcon />
-        <InstagramIcon /> */}
-        <GitHubIcon />
+      <div>
+        {contacts.map((contact, i) => (
+          <div key={i}>
+            <a href={contact.link} target="_blank" rel="noreferrer">
+              {contact.icon}
+            </a>
+          </div>
+        ))}
       </div>
+      <p>@ 2023</p>
     </SFooter>
   );
 };
 
 const SFooter = styled.div`
   background-color: var(--sec-color);
+  text-align: center;
+  padding-block: 3rem;
 
-  .Footer--icons {
-    padding: 2rem;
-    margin-inline: auto;
-    max-width: 500px;
+  div {
     display: flex;
-    /* justify-content: space-around; */
-
-    .icon {
-      width: 30px;
-      height: 30px;
-
-      path {
-        fill: white;
-      }
-    }
+    align-items: center;
+    justify-content: center;
+    gap: 0.1rem;
   }
 
-  @media ${devices.tablet} {
-    grid-column: 1 / -1;
+  p {
+    color: white;
   }
 `;
 

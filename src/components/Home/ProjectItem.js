@@ -3,11 +3,11 @@ import { useRef, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { RiArrowRightSLine } from 'react-icons/ri';
 
-import useScrollObserver from '../hooks/useScrollObserver';
+import { useScrollObserver } from 'hooks/useScrollObserver';
 import { devices } from 'assets/data';
 
 const ProjectItem = (props) => {
-  const { id, name, imgSrc, url } = props;
+  const { id, name, url, images } = props;
   const itemRef = useRef({});
 
   const observer = useScrollObserver((entry) => {
@@ -23,15 +23,15 @@ const ProjectItem = (props) => {
   return (
     <Item className="project hide-project-item" ref={itemRef}>
       <div className="project-preview">
-        <img src={imgSrc} alt={name} width="100%" loading="lazy" />
+        <img src={images[0].url} alt={name} />
       </div>
       <div className="rect">
         <p className="project-title">{name}</p>
         <div className="links">
-          <Link className="button" to={`/projects/${id}`}>
+          <Link className="button" to={`/project/${id}`}>
             Details <RiArrowRightSLine size="2em" />
           </Link>
-          <a className="button" href={url}>
+          <a className="button" href={url} target="_blank" rel="noreferrer">
             Visit Site <RiArrowRightSLine size="2em" />
           </a>
         </div>
@@ -58,8 +58,7 @@ const Item = styled.div`
     top: -10px;
     left: -20px;
     bottom: -10px;
-    width: 50px;
-    /* height: 100px; */
+    width: 3rem;
     background-color: var(--theme-color);
     z-index: 1;
     clip-path: polygon(100% 0%, 75% 50%, 100% 100%, 25% 100%, 0% 50%, 25% 0%);
@@ -91,10 +90,17 @@ const Item = styled.div`
     height: 100%;
 
     img {
+      display: block;
       object-fit: cover;
-      /* height: 100%; */
+      height: 100%;
+      width: 100%;
+      object-position: top;
       filter: brightness(70%);
     }
+  }
+
+  @media ${devices.laptop} {
+    height: 23rem;
   }
 
   .rect {
@@ -104,19 +110,24 @@ const Item = styled.div`
     right: 0;
     bottom: -1.5rem;
     border: 3px solid var(--theme-color);
-    min-width: 55%;
-    min-height: 30%;
+    /* min-width: 55%; */
+    /* min-height: 30%; */
+    width: 100%;
+    max-width: 20rem;
     box-shadow: 0 3px 4px rgb(0 0 0 / 0.2);
     padding: 2rem;
     border-radius: inherit;
+    z-index: 2;
 
     @media ${devices.tablet} {
+      max-width: 24rem;
       right: -2rem;
     }
 
     .project-title {
       font-size: 2rem;
       margin: 0;
+      text-transform: capitalize;
     }
 
     .links {
@@ -126,14 +137,9 @@ const Item = styled.div`
       color: var(--btw);
 
       .button {
-        width: 6rem;
+        max-width: 6rem;
         background-color: var(--sec-color);
         color: var(--btw);
-
-        .arrow {
-          width: 10px;
-          height: 10px;
-        }
       }
     }
   }

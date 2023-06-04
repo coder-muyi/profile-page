@@ -3,6 +3,18 @@ import { devices } from 'assets/data';
 
 const GlobalStyles = createGlobalStyle`
 
+* {
+  transition-duration: 0.25s;
+}
+
+*:focus {
+  outline-color: var(--btw);
+}
+
+::selection {
+  background-color: rgb(245, 98, 93, 0.4);
+}
+
 h1,
 h2 {
   color: var(--header-txt-color);
@@ -77,6 +89,7 @@ button,
   text-decoration: none;
   gap: 10px;
   padding: 0.5rem;
+  cursor: pointer;
 }
 
 button:hover,
@@ -90,23 +103,13 @@ p {
   color: var(--paragraph-txt-color);
 }
 
-.projects-list {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  list-style-type: none;
-  margin: 0;
-  text-align: center;
-  padding: 2em 0;
-}
-
 .dark-app .project {
   box-shadow: 0px 6px 10px rgba(255, 255, 255, 0.5);
 }
-
-.dark-app .project-overlay .go-to {
-  background-color: white;
-  color: black !important;
+.dark-app {
+  .project {
+    box-shadow: 0px 6px 10px rgba(255, 255, 255, 0.5);
+  }
 }
 
 @media ${devices.tablet} {

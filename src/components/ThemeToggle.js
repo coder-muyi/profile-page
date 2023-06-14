@@ -1,15 +1,12 @@
-import styled from "styled-components/macro"
+import styled from 'styled-components/macro';
 
 const ThemeToggle = ({ changeTheme, isDarkMode }) => {
   return (
     <StyledThemeToggle>
-      <Toggle
-        onChange={changeTheme}
-        checked={isDarkMode}
-      />
+      <Toggle onChange={changeTheme} checked={isDarkMode} />
     </StyledThemeToggle>
-  )
-}
+  );
+};
 
 const StyledThemeToggle = styled.div`
   position: fixed;
@@ -22,13 +19,13 @@ const StyledThemeToggle = styled.div`
   z-index: 1000;
   width: 60px;
   height: 30px;
-  
+
   & > * {
     cursor: pointer;
   }
 
   &::after {
-    content: "Change Theme";
+    content: 'Change Theme';
     position: absolute;
     top: 20%;
     left: 120%;
@@ -39,12 +36,12 @@ const StyledThemeToggle = styled.div`
 `;
 
 const Toggle = styled.input.attrs({
-  type: "checkbox"
+  type: 'checkbox',
 })`
   appearance: none;
   position: relative;
   border-radius: inherit;
-  background-color: ${props => props.checked ? "grey" : "white"};
+  background-color: ${(props) => (props.checked ? 'grey' : 'white')};
   width: 100%;
   height: 100%;
   padding: 1em;
@@ -52,7 +49,7 @@ const Toggle = styled.input.attrs({
   display: block;
 
   &::before {
-    content: "";
+    content: '';
     position: absolute;
     display: block;
     left: 0;
@@ -60,11 +57,11 @@ const Toggle = styled.input.attrs({
     height: 110%;
     width: 55%;
     border-radius: 100%;
-    transition-duration: .3s;
+    transition-duration: var(--trans-dur);
     z-index: 3;
-    background: var(--sec-color);
+    background: var(--theme-color);
   }
-  
+
   &:checked::before {
     transform: translate(100%);
   }

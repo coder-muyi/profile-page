@@ -1,60 +1,67 @@
-const rootUrl = `${process.env.PUBLIC_URL}/project_imgs`
+const rootUrl = `${process.env.PUBLIC_URL}/project_imgs`;
 
-const sizes = {
-  mobileS: '320px',
-  mobileM: '375px',
-  mobileL: '425px',
-  tablet: '768px',
-  laptop: '1024px',
-  laptopL: '1440px',
-  desktop: '2560px',
+export const sizes = {
+  mobileS: 320,
+  mobileM: 375,
+  mobileL: 425,
+  tablet: 768,
+  laptop: 1024,
+  laptopL: 1440,
+  desktop: 2560,
 };
 
 export const devices = {
-  mobileS: `(min-width: ${sizes.mobileS})`,
-  mobileM: `(min-width: ${sizes.mobileM})`,
-  mobileL: `(min-width: ${sizes.mobileL})`,
-  tablet: `(min-width: ${sizes.tablet})`,
-  laptop: `(min-width: ${sizes.laptop})`,
-  laptopL: `(min-width: ${sizes.laptopL})`,
-  desktop: `(min-width: ${sizes.desktop})`,
+  mobileS: `(min-width: ${sizes.mobileS}px)`,
+  mobileM: `(min-width: ${sizes.mobileM}px)`,
+  mobileL: `(min-width: ${sizes.mobileL}px)`,
+  tablet: `(min-width: ${sizes.tablet}px)`,
+  laptop: `(min-width: ${sizes.laptop}px)`,
+  laptopL: `(min-width: ${sizes.laptopL}px)`,
+  desktop: `(min-width: ${sizes.desktop}px)`,
 };
 
 export const projectsList = [
   {
-    name: "Moviemanic 2.0",
+    id: 24,
+    name: 'Moviemanic 2.0',
     imgSrc: `${rootUrl}/moviemanic-2.png`,
-    url: "https://moviemanic.vercel.app"
+    url: 'https://moviemanic.vercel.app',
   },
-  { 
-    name: "Geoid",
+  {
+    id: 75,
+    name: 'Geoid',
     imgSrc: `${rootUrl}/geoid.png`,
-    url: "https://geoid.vercel.app"
+    url: 'https://geoid.vercel.app',
   },
   {
-    name: "Material UI Colors Demo",
+    id: 74,
+    name: 'Material UI Colors Demo',
     imgSrc: `${rootUrl}/material-ui-color-preview.png`,
-    url: "https://samuel-username.github.io/Material-UI-Colors",
+    url: 'https://samuel-username.github.io/Material-UI-Colors',
   },
   {
-    name: "Moviemanic",
+    id: 1,
+    name: 'Moviemanic',
     imgSrc: `${rootUrl}/moviemanic.png`,
-    url: "https://codermuyi.github.io/Movie-list"
+    url: 'https://codermuyi.github.io/Movie-list',
   },
   {
-    name: "My blackjack",
+    id: 34,
+    name: 'My blackjack',
     imgSrc: `${rootUrl}/sam-blackjack.png`,
-    url: "https://samuel-username.github.io/blackjack"
+    url: 'https://samuel-username.github.io/blackjack',
   },
   {
-    name: "Huddle landing page",
+    id: 23,
+    name: 'Huddle landing page',
     imgSrc: `${rootUrl}/huddle.png`,
-    url: "https://samuel-username.github.io/landing_page"
+    url: 'https://samuel-username.github.io/landing_page',
   },
   {
-    name: "Base Apparel",
+    id: 6,
+    name: 'Base Apparel',
     imgSrc: `${rootUrl}/base-apparel.png`,
-    url: "https://samuel-username.github.io/coming-soon-landing-page"
+    url: 'https://samuel-username.github.io/coming-soon-landing-page',
   },
   /*
   {
@@ -67,10 +74,5 @@ export const projectsList = [
     imgSrc: `${rootUrl}/coming-soon.png`,
     url: ""
   },
-  { 
-    name: "Moviemanic 2.0",
-    imgSrc: `${rootUrl}/coming-soon.png`,
-    url: ""
-  }
   */
-]
+];

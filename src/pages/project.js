@@ -5,6 +5,7 @@ import Canvas from 'components/common/Canvas';
 import ScrollSection from 'components/common/ScrollSection';
 import Backdrop from 'components/Project/Backdrop';
 import Footer from 'components/Footer';
+import Loading from 'components/common/Loading';
 import { useWindowSize } from 'hooks/useWindowSize';
 import { useGetProjectDetails } from 'hooks/useGetProjectDetails';
 import { useGetProjects } from 'hooks/useGetProjects';
@@ -13,74 +14,93 @@ import { devices } from 'assets/data';
 const ProjectPage = () => {
   const dim = useWindowSize();
   const { projectId: id } = useParams();
-  const { data } = useGetProjectDetails(id);
+  const { data, isLoading } = useGetProjectDetails(id);
   const { data: projects } = useGetProjects();
   const otherProjects = projects?.filter((p) => p.projectDetail?.id !== id);
+
+  if (isLoading) return <Loading />;
 
   return (
     <>
       <Fixed>
         <Canvas dimension={dim} />
       </Fixed>
-      <Backdrop
-        projectUrl={data?.project.url}
-        imageUrl={data?.project.images[0].url}
-      />
-      <ScrollSection
-        name="section"
-        style={{
-          backgroundColor: 'var(--wtb)',
-          padding: '1rem',
-          paddingBottom: '3rem',
-          position: 'relative',
-          zIndex: '1',
-        }}
-        includePadding
-      >
-        <StyledDiv>
-          <h1 className="section-header title">
-            <span>{data?.project.name}</span>
-          </h1>
-          <p>{data?.about}</p>
-        </StyledDiv>
-        <OtherImages>
-          {data?.project.images.slice(1, 4).map((image) => (
-            <img key={image.id} src={image.url} />
-          ))}
-        </OtherImages>
-        <StyledDiv>
-          <h2>Notable Features</h2>
-          <ul>
-            {data?.notableFeatures.map((item, i) => (
-              <li key={i}>{item}</li>
-            ))}
-          </ul>
-        </StyledDiv>
-        <StyledDiv>
-          <h2>Some technology used</h2>
-          <ul>
-            {data?.techUsed.map((item, i) => (
-              <li key={i}>{item}</li>
-            ))}
-          </ul>
-          <h2></h2>
-        </StyledDiv>
-        <StyledDiv>
-          <h2>Other projects</h2>
-          <CardContainer>
-            {otherProjects?.map((p) => (
-              <Card key={p.id} className="card">
-                <Link to={`/project/${p.projectDetail?.id}`}>
-                  <img src={p.images[0].url} alt="" />
-                </Link>
-                <Link to={`/project/${p.projectDetail?.id}`}>
-                  <span>{p.name}</span>
-                </Link>
-              </Card>
-            ))}
-          </CardContainer>
-        </StyledDiv>
-      </ScrollSection>
+      {!data ? (
+        <div style={{ paddingBlock: '18rem', fontSize: '3rem' }}>
+          <p style={{ textAlign: 'center', fontSize: '3rem' }}>
+            Failed to fetch item
+            <Link
+              className="button"
+              to="/"
+              style={{ width: '6rem', margin: '0 auto' }}
+            >
+              Go to Home
+            </Link>
+          </p>
+        </div>
+      ) : (
+        <>
+          <Backdrop
+            projectUrl={data?.project.url}
+            imageUrl={data?.project.images[0].url}
+          />
+          <ScrollSection
+            name="section"
+            style={{
+              backgroundColor: 'var(--wtb)',
+              padding: '1rem',
+              paddingBottom: '3rem',
+              position: 'relative',
+              zIndex: '1',
+            }}
+            includePadding
+          >
+            <StyledDiv>
+              <h1 className="section-header title">
+                <span>{data?.project.name}</span>
+              </h1>
+              <p>{data?.about}</p>
+            </StyledDiv>
+            <OtherImages>
+              {data?.project.images.slice(1, 4).map((image) => (
+                <img key={image.id} src={image.url} />
+              ))}
+            </OtherImages>
+            <StyledDiv>
+              <h2>Notable Features</h2>
+              <ul>
+                {data?.notableFeatures.map((item, i) => (
+                  <li key={i}>{item}</li>
+                ))}
+              </ul>
+            </StyledDiv>
+            <StyledDiv>
+              <h2>Some technology used</h2>
+              <ul>
+                {data?.techUsed.map((item, i) => (
+                  <li key={i}>{item}</li>
+                ))}
+              </ul>
+              <h2></h2>
+            </StyledDiv>
+            <StyledDiv>
+              <h2>Other projects</h2>
+              <CardContainer>
+                {otherProjects?.map((p) => (
+                  <Card key={p.id} className="card">
+                    <Link to={`/project/${p.projectDetail?.id}`}>
+                      <img src={p.images[0].url} alt="" />
+                    </Link>
+                    <Link to={`/project/${p.projectDetail?.id}`}>
+                      <span>{p.name}</span>
+                    </Link>
+                  </Card>
+                ))}
+              </CardContainer>
+            </StyledDiv>
+          </ScrollSection>
+        </>
+      )}
       <Footer displaySocial />
     </>
   );

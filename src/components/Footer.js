@@ -1,11 +1,12 @@
 import styled from 'styled-components';
-
 import {
   IoLogoTwitter,
   IoLogoGithub,
   IoMail,
   IoLogoLinkedin,
 } from 'react-icons/io5';
+
+import { devices } from 'assets/data';
 
 const iconSize = '3em';
 const contacts = [
@@ -33,7 +34,7 @@ const contacts = [
 
 const Footer = ({ displaySocial }) => {
   return (
-    <SFooter>
+    <SFooter displaySocial={displaySocial}>
       {displaySocial && (
         <div>
           {contacts.map((contact, i) => (
@@ -55,6 +56,11 @@ const SFooter = styled.div`
   text-align: center;
   padding-block: 3rem;
   color: white;
+  margin-bottom: ${(p) => (!p.displaySocial ? '5rem' : '0')};
+
+  @media ${devices.tablet} {
+    margin-bottom: 0;
+  }
 
   div {
     display: flex;

@@ -32,21 +32,21 @@ const contacts = [
     text: 'Twitter',
     link: 'https://twitter.com/codermuyi',
   },
-  {
-    icon: <IoLogoFacebook size={iconSize} />,
-    text: 'Facebook',
-    link: 'https://web.facebook.com/codermuyi',
-  },
-  {
-    icon: <IoLogoInstagram size={iconSize} />,
-    text: 'Instagram',
-    link: 'https://www.instagram.com/codermuyi',
-  },
-  {
-    icon: <FrontendMentorIcon />,
-    text: 'Frontend Mentor',
-    link: 'https://www.frontendmentor.io/profile/codermuyi',
-  },
+  // {
+  //   icon: <IoLogoFacebook size={iconSize} />,
+  //   text: 'Facebook',
+  //   link: 'https://web.facebook.com/codermuyi',
+  // },
+  // {
+  //   icon: <IoLogoInstagram size={iconSize} />,
+  //   text: 'Instagram',
+  //   link: 'https://www.instagram.com/codermuyi',
+  // },
+  // {
+  //   icon: <FrontendMentorIcon />,
+  //   text: 'Frontend Mentor',
+  //   link: 'https://www.frontendmentor.io/profile/codermuyi',
+  // },
 ];
 
 const Contact = () => {

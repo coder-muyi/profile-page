@@ -33,7 +33,7 @@ const contacts = [
 ];
 
 const Footer = ({ displaySocial }) => {
-  const year = new Date().getFullYear()
+  const year = new Date().getFullYear();
 
   return (
     <SFooter displaySocial={displaySocial}>

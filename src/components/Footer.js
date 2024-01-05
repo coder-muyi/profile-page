@@ -33,6 +33,8 @@ const contacts = [
 ];
 
 const Footer = ({ displaySocial }) => {
+  const year = new Date().getFullYear()
+
   return (
     <SFooter displaySocial={displaySocial}>
       {displaySocial && (
@@ -46,7 +48,7 @@ const Footer = ({ displaySocial }) => {
           ))}
         </div>
       )}
-      <p>@ 2023</p>
+      <p>@ {year}</p>
     </SFooter>
   );
 };
